@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dubhpx7hcry7f"]
+
+[ext_resource type="Script" uid="uid://s43ditpfc6qp" path="res://Scripts/speakersMusic.gd" id="1_c43ow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c43ow"]
+size = Vector3(1, 0.48266602, 0.19989014)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmrif"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vynxj"]
+material = SubResource("StandardMaterial3D_dmrif")
+size = Vector3(0.08923439, 0.08923439, 0.08923439)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14q7b"]
+size = Vector3(0.08923439, 0.08923439, 0.08923439)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppu1y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c43ow"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74cji"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r4pl1"]
+material = SubResource("StandardMaterial3D_74cji")
+
+[node name="boomBox" type="RigidBody3D" unique_id=1533333050]
+script = ExtResource("1_c43ow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1647986726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015869141, -0.0011901855)
+shape = SubResource("BoxShape3D_c43ow")
+
+[node name="button" type="Area3D" parent="." unique_id=1994443095]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="button" unique_id=2147353036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.15, 0.075)
+mesh = SubResource("BoxMesh_vynxj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button" unique_id=1335507565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.15, 0.075)
+shape = SubResource("BoxShape3D_14q7b")
+
+[node name="boomboxModel" type="Node3D" parent="." unique_id=715085612]
+
+[node name="base" type="MeshInstance3D" parent="boomboxModel" unique_id=2078011686]
+transform = Transform3D(1, 0, 0, 0, 0.4800486, 0, 0, 0, -0.19194213, 0, 0, 0)
+mesh = SubResource("BoxMesh_ppu1y")
+
+[node name="base2" type="MeshInstance3D" parent="boomboxModel" unique_id=1682340685]
+transform = Transform3D(0.78066415, 0, 0, 0, 0.0406107, 0, 0, 0, -0.016994117, 0, 0.3344715, 0)
+mesh = SubResource("SphereMesh_c43ow")
+
+[node name="base3" type="MeshInstance3D" parent="boomboxModel" unique_id=551766616]
+transform = Transform3D(0.16160473, -0.025156867, 0, 0.12752244, 0.03188042, 0, 0, 0, -0.016994117, -0.38979667, 0.2805095, -7.466506e-05)
+mesh = SubResource("SphereMesh_c43ow")
+
+[node name="base4" type="MeshInstance3D" parent="boomboxModel" unique_id=1814639469]
+transform = Transform3D(0.1650036, 0.024283042, 0, -0.12309295, 0.032550927, 0, 0, 0, -0.016994117, 0.38763058, 0.27294874, -0.0017083392)
+mesh = SubResource("SphereMesh_c43ow")
+
+[node name="circle1" type="MeshInstance3D" parent="boomboxModel" unique_id=1478389519]
+transform = Transform3D(0.4029337, 0, 0, 0, -1.4830868e-09, 0.38354412, 0, 0.033929072, 1.6765245e-08, -0.25806707, 0, 0.1033915)
+mesh = SubResource("CylinderMesh_r4pl1")
+
+[node name="circle2" type="MeshInstance3D" parent="boomboxModel" unique_id=482939690]
+transform = Transform3D(0.4029337, 0, 0, 0, -1.4830868e-09, 0.38354412, 0, 0.033929072, 1.6765245e-08, 0.26386204, 0, 0.1033915)
+mesh = SubResource("CylinderMesh_r4pl1")
+
+[connection signal="body_entered" from="button" to="." method="_on_button_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bo2dpae16s0f2"]
+
+[ext_resource type="Script" uid="uid://b7dati072fc0s" path="res://freeflycamera.gd" id="1_q5qj7"]
+
+[node name="Camera3D" type="Camera3D" unique_id=1595908686]
+script = ExtResource("1_q5qj7")

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ckkwkje0321eg"]
+
+[ext_resource type="Script" uid="uid://dhb1rdgmydfk1" path="res://Scripts/main_menu.gd" id="1_gek4i"]
+
+[node name="gameUI" type="CanvasLayer" unique_id=378613411]
+
+[node name="Control" type="Control" parent="." unique_id=485938356]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gek4i")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1395845515]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(1.6799997, 1.6799997)
+color = Color(0, 0.2627451, 0.31764707, 0.101960786)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect" unique_id=1452925750]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 652.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer" unique_id=192087615]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer" unique_id=1429179196]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer" unique_id=929758910]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/ColorRect" unique_id=1853268983]
+layout_mode = 0
+offset_left = 1157.7382
+offset_right = 2308.7383
+offset_bottom = 652.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer2" unique_id=350439353]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="OptionButton" type="OptionButton" parent="Control/ColorRect/MarginContainer2/VBoxContainer" unique_id=94519665]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/ColorRect/MarginContainer2/VBoxContainer/OptionButton" unique_id=473779298]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/Button2" to="Control" method="_on_button_pressed"]

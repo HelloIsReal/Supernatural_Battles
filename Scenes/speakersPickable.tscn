@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://uejbqgsbuhk2"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_j2sdn"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_6fpik"]
+[ext_resource type="PackedScene" uid="uid://cvljrn2hcoqls" path="res://Scenes/musicMenu.tscn" id="4_3wxa0"]
+[ext_resource type="Script" uid="uid://bpwq5bevkgwvm" path="res://Scripts/speakersButton.gd" id="4_4otlb"]
+[ext_resource type="Script" uid="uid://s43ditpfc6qp" path="res://Scripts/speakersMusic.gd" id="5_4otlb"]
+[ext_resource type="AudioStream" uid="uid://etlgxmlvaim7" path="res://songs/JACKPOT.mp3" id="5_cterg"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="7_1vfmg"]
+[ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="8_gorjg"]
+[ext_resource type="Script" uid="uid://dvobm6vcfnqe8" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="9_2yahw"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="10_s56v4"]
+[ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="11_gthea"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrpih"]
+size = Vector3(0.78808594, 0.10059452, 0.024795532)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fpik"]
+size = Vector3(1, 0.48266602, 0.19989014)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmrif"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3wxa0"]
+material = SubResource("StandardMaterial3D_dmrif")
+size = Vector3(0.08923439, 0.08923439, 0.08923439)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4otlb"]
+size = Vector3(0.08923439, 0.08923439, 0.08923439)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cterg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ib8hc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74cji"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vemei"]
+material = SubResource("StandardMaterial3D_74cji")
+
+[sub_resource type="Resource" id="Resource_yixqq"]
+script = ExtResource("9_2yahw")
+closed_pose = ExtResource("8_gorjg")
+metadata/_custom_type_script = "uid://dvobm6vcfnqe8"
+
+[sub_resource type="Resource" id="Resource_4pjnk"]
+script = ExtResource("9_2yahw")
+closed_pose = ExtResource("11_gthea")
+metadata/_custom_type_script = "uid://dvobm6vcfnqe8"
+
+[node name="PickableObject" unique_id=1316423025 instance=ExtResource("1_j2sdn")]
+mass = 10.0
+second_hand_grab = 2
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014648438, 0.34178305, 0.010398865)
+shape = SubResource("BoxShape3D_vrpih")
+
+[node name="Viewport2Din3D" parent="." index="1" unique_id=1085811347 instance=ExtResource("3_6fpik")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.76481146, 0)
+screen_size = Vector2(1280, 720)
+scene = ExtResource("4_3wxa0")
+viewport_size = Vector2(1920, 1080)
+transparent = 1
+scene_properties_keys = PackedStringArray()
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2" unique_id=325150444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015869141, -0.0011901855)
+shape = SubResource("BoxShape3D_6fpik")
+
+[node name="button" type="Area3D" parent="." index="3" unique_id=558025627]
+script = ExtResource("4_4otlb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="button" index="0" unique_id=149672233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.15, 0.075)
+mesh = SubResource("BoxMesh_3wxa0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button" index="1" unique_id=258262143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.15, 0.075)
+shape = SubResource("BoxShape3D_4otlb")
+
+[node name="boomboxModel" type="Node3D" parent="." index="4" unique_id=638983840]
+
+[node name="base" type="MeshInstance3D" parent="boomboxModel" index="0" unique_id=1720450332]
+transform = Transform3D(1, 0, 0, 0, 0.4800486, 0, 0, 0, -0.19194213, 0, 0, 0)
+mesh = SubResource("BoxMesh_cterg")
+
+[node name="base2" type="MeshInstance3D" parent="boomboxModel" index="1" unique_id=1069387836]
+transform = Transform3D(0.78066415, 0, 0, 0, 0.0406107, 0, 0, 0, -0.016994117, 0, 0.3344715, 0)
+mesh = SubResource("SphereMesh_ib8hc")
+
+[node name="base3" type="MeshInstance3D" parent="boomboxModel" index="2" unique_id=444196977]
+transform = Transform3D(0.16160473, -0.025156867, 0, 0.12752244, 0.03188042, 0, 0, 0, -0.016994117, -0.38979667, 0.2805095, -7.466506e-05)
+mesh = SubResource("SphereMesh_ib8hc")
+
+[node name="base4" type="MeshInstance3D" parent="boomboxModel" index="3" unique_id=1288185881]
+transform = Transform3D(0.1650036, 0.024283042, 0, -0.12309295, 0.032550927, 0, 0, 0, -0.016994117, 0.38763058, 0.27294874, -0.0017083392)
+mesh = SubResource("SphereMesh_ib8hc")
+
+[node name="circle1" type="MeshInstance3D" parent="boomboxModel" index="4" unique_id=2113946242]
+transform = Transform3D(0.4029337, 0, 0, 0, -1.4830868e-09, 0.38354412, 0, 0.033929072, 1.6765245e-08, -0.25806707, 0, 0.1033915)
+mesh = SubResource("CylinderMesh_vemei")
+
+[node name="circle2" type="MeshInstance3D" parent="boomboxModel" index="5" unique_id=1458087071]
+transform = Transform3D(0.4029337, 0, 0, 0, -1.4830868e-09, 0.38354412, 0, 0.033929072, 1.6765245e-08, 0.26386204, 0, 0.1033915)
+mesh = SubResource("CylinderMesh_vemei")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="5" unique_id=1053164066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12214726)
+stream = ExtResource("5_cterg")
+attenuation_model = 3
+max_distance = 4.0
+script = ExtResource("5_4otlb")
+
+[node name="GrabPointHandLeft" parent="." index="6" unique_id=1544079159 instance=ExtResource("7_1vfmg")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.058139205, 0.3231471, -0.09031139)
+hand_pose = SubResource("Resource_yixqq")
+
+[node name="GrabPointHandLeft2" parent="." index="7" unique_id=887495261 instance=ExtResource("7_1vfmg")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.16797338, 0.3231471, -0.09031139)
+hand_pose = SubResource("Resource_yixqq")
+
+[node name="GrabPointHandLeft3" parent="." index="8" unique_id=402025444 instance=ExtResource("7_1vfmg")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.26700836, 0.32314706, -0.09031139)
+hand_pose = SubResource("Resource_yixqq")
+
+[node name="GrabPointHandRight" parent="." index="9" unique_id=1335023887 instance=ExtResource("10_s56v4")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.04234247, 0.3231471, -0.09031139)
+hand_pose = SubResource("Resource_4pjnk")
+
+[node name="GrabPointHandRight2" parent="." index="10" unique_id=2141760874 instance=ExtResource("10_s56v4")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.25447518, 0.3231471, -0.09031139)
+hand_pose = SubResource("Resource_4pjnk")
+
+[node name="GrabPointHandRight3" parent="." index="11" unique_id=1062836758 instance=ExtResource("10_s56v4")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.17703345, 0.32314712, -0.09031139)
+hand_pose = SubResource("Resource_4pjnk")
+
+[connection signal="area_entered" from="button" to="button" method="_on_area_entered"]
+[connection signal="body_entered" from="button" to="button" method="_on_body_entered"]
