@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b5lbbny2tprw"]
 
 [ext_resource type="Script" uid="uid://8t2hi6onuxtk" path="res://Scripts/main.gd" id="1_vhp3c"]
-[ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="2_dwmg1"]
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="3_t0sxt"]
 [ext_resource type="PackedScene" uid="uid://dcnba8u2qp7h1" path="res://Scenes/rock_climb_object.tscn" id="4_r8bqt"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_qbi1s"]
@@ -63,8 +62,6 @@ transparency = 1
 [node name="Main" type="Node3D" unique_id=1296449042]
 script = ExtResource("1_vhp3c")
 
-[node name="Camera3D" parent="." unique_id=1595908686 instance=ExtResource("2_dwmg1")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=354109329]
 environment = SubResource("Environment_1bvp3")
 
@@ -82,6 +79,7 @@ shape = SubResource("BoxShape3D_7dm0k")
 mesh = SubResource("BoxMesh_ig7tw")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("3_t0sxt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.3318652, -1.4339559)
 
 [node name="Table" type="MeshInstance3D" parent="." unique_id=1999225112]
 transform = Transform3D(1.6002152, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3572693, 0.74379575)

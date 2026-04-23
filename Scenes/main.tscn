@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://clp38wp7a4775" path="res://earth.glb" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cj6m5lmerhxx3" path="res://Scenes/main.gd" id="1_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_ynf5e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(5, 0.1, 5)
@@ -20,36 +19,65 @@ fog_light_color = Color(0.1455355, 0.1620205, 0.18767142, 1)
 fog_sun_scatter = 0.01
 fog_density = 0.0137
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gbba"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8gbba"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gbba"]
+margin = 0.01
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21xkr"]
 transparency = 1
 cull_mode = 1
 shading_mode = 0
 albedo_color = Color(0.24985075, 0.24985075, 0.24985075, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jjvhh"]
-material = SubResource("StandardMaterial3D_8gbba")
-size = Vector3(1, 0.1, 1)
+material = SubResource("StandardMaterial3D_21xkr")
+size = Vector3(3, 0.1, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kry3j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bp64"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 1, 1, 0.1764706)
 
 [sub_resource type="SphereMesh" id="SphereMesh_21xkr"]
-material = SubResource("StandardMaterial3D_kry3j")
-radius = 1.0
-height = 2.0
+material = SubResource("StandardMaterial3D_6bp64")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gbba"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.24985075, 0.24985075, 0.24985075, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
 material = SubResource("StandardMaterial3D_8gbba")
 size = Vector3(0.25, 0.01, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjvhh"]
+margin = 0.01
+size = Vector3(0.16495043, 5, 3.2283936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kry3j"]
+margin = 0.01
+size = Vector3(3.203225, 5, 0.21398926)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21xkr"]
+margin = 0.01
+size = Vector3(0.20024526, 5, 3.3259583)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bp64"]
+margin = 0.01
+size = Vector3(3.310572, 5, 0.27240753)
+
 [node name="main" type="Node3D" unique_id=903732283]
 script = ExtResource("1_jjvhh")
 
-[node name="Camera3D" parent="." unique_id=1595908686 instance=ExtResource("9_ynf5e")]
-transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 110.11629, 292.52878, 161.95425)
+[node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -107.18198, 294.04974, 185.75433)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=945938576]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.05, 0)
@@ -67,9 +95,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6537919, 30.155088, 1.6728
 environment = SubResource("Environment_bo1nx")
 
 [node name="capsule" type="Node3D" parent="." unique_id=1402568643]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 96.2514, 293.9673, 159.67242)
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -107.161545, 293.51218, 185.76389)
 
-[node name="platform" type="MeshInstance3D" parent="capsule" unique_id=1743857895]
+[node name="platform" type="StaticBody3D" parent="capsule" unique_id=1644155028]
+physics_material_override = SubResource("PhysicsMaterial_8gbba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="capsule/platform" unique_id=1042472068]
+shape = SubResource("BoxShape3D_8gbba")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="capsule/platform" unique_id=1270928067]
+shape = SubResource("BoxShape3D_8gbba")
+
+[node name="platform" type="MeshInstance3D" parent="capsule/platform" unique_id=1743857895]
 mesh = SubResource("BoxMesh_jjvhh")
 
 [node name="glassSphere" type="MeshInstance3D" parent="capsule" unique_id=402812362]
@@ -89,8 +126,31 @@ outline_size = 24
 transform = Transform3D(0.25881898, -0.9659258, 0, 0.9659258, 0.25881898, 0, 0, 0, 1, 0, 0.836, 0)
 mesh = SubResource("BoxMesh_8gbba")
 
-[node name="Timer" type="Timer" parent="capsule/countdownTimer" unique_id=1253257775]
+[node name="wall" type="StaticBody3D" parent="capsule" unique_id=1366208477]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="capsule/wall" unique_id=1890502262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4529724, 2.21344, 0.086753845)
+shape = SubResource("BoxShape3D_jjvhh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="capsule/wall" unique_id=1158924284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06614685, 2.21344, 1.4710007)
+shape = SubResource("BoxShape3D_kry3j")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="capsule/wall" unique_id=2102547626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5675659, 2.21344, -0.08506775)
+shape = SubResource("BoxShape3D_21xkr")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="capsule/wall" unique_id=410688966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012329102, 2.21344, -1.4967194)
+shape = SubResource("BoxShape3D_6bp64")
+
+[node name="timeBeforePlatformMove" type="Timer" parent="." unique_id=748234404]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1253257775]
+process_callback = 0
 wait_time = 10.0
 
-[node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 169.14206, 0.28917503, 0)
+[connection signal="timeout" from="timeBeforePlatformMove" to="." method="_on_time_before_platform_move_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://erx5gd5q14a6"]
 
-[ext_resource type="Script" uid="uid://7trvh60un0q2" path="res://Scripts/xr_origin.gd" id="1_1cx2o"]
+[ext_resource type="Script" uid="uid://ces1j6plojyra" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="1_2texp"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_jw5w6"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_rturn"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_v0u4l"]
@@ -26,7 +26,7 @@ curve = SubResource("Curve_qrigr")
 gravity = Vector3(0, 3, 0)
 scale_curve = SubResource("CurveTexture_2texp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2texp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1pme"]
 transparency = 1
 albedo_texture = ExtResource("10_qrigr")
 emission = Color(0.27022192, 0.27022192, 0.2702219, 1)
@@ -36,7 +36,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_r1pme"]
-material = SubResource("StandardMaterial3D_2texp")
+material = SubResource("StandardMaterial3D_r1pme")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1pme"]
 size = Vector3(0.095329285, 0.16381836, 0.20827866)
@@ -50,7 +50,7 @@ jump_velocity = 4.0
 metadata/_custom_type_script = "uid://cjfu28jmrajlo"
 
 [node name="XROrigin3D" type="XROrigin3D" unique_id=503226863]
-script = ExtResource("1_1cx2o")
+script = ExtResource("1_2texp")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1211235657]
 
