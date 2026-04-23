@@ -8,10 +8,18 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	$capsule/countdownTimer/Label3D.text = "T-Minus: \n %.1f" %  $Timer.time_left
+	$earth.rotation.x += 0.0002
+	$earth.rotation.y += 0.0001
 
 
 func _on_time_before_platform_move_timeout():
 	$Timer.wait_time = arrivalTime
 	$Timer.start()
 	var tween = get_tree().create_tween()
-	tween.tween_property($capsule, "position", Vector3(0,0,0), arrivalTime)
+	tween.tween_property($capsule, "position", Vector3(-100,300,300), 10)
+	await tween.finished
+	print("??? Thruster issue")
+	await create_tween().tween_interval(3).finished
+	tween = get_tree().create_tween()
+	tween.tween_property($capsule, "position", Vector3(0,100,0), arrivalTime-20)
+	

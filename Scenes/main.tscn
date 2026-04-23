@@ -15,9 +15,12 @@ material = SubResource("StandardMaterial3D_jjgbg")
 size = Vector3(5, 0.1, 5)
 
 [sub_resource type="Environment" id="Environment_bo1nx"]
+ambient_light_source = 2
+ambient_light_color = Color(0.98939866, 0.98939866, 0.98939854, 1)
+ambient_light_energy = 5.0
+fog_enabled = true
 fog_light_color = Color(0.1455355, 0.1620205, 0.18767142, 1)
 fog_sun_scatter = 0.01
-fog_density = 0.0137
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8gbba"]
 rough = true
@@ -40,7 +43,7 @@ size = Vector3(3, 0.1, 3)
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0, 1, 1, 0.1764706)
+albedo_color = Color(0, 1, 1, 0.039215688)
 
 [sub_resource type="SphereMesh" id="SphereMesh_21xkr"]
 material = SubResource("StandardMaterial3D_6bp64")
@@ -73,14 +76,23 @@ size = Vector3(0.20024526, 5, 3.3259583)
 margin = 0.01
 size = Vector3(3.310572, 5, 0.27240753)
 
+[sub_resource type="SphereMesh" id="SphereMesh_8gbba"]
+radius = 149.0
+height = 298.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjvhh"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
 [node name="main" type="Node3D" unique_id=903732283]
 script = ExtResource("1_jjvhh")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -107.18198, 294.04974, 185.75433)
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -107.18198, 400, 400)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=945938576]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.05, 0)
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 100, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=784742741]
 shape = SubResource("BoxShape3D_7u77a")
@@ -88,14 +100,11 @@ shape = SubResource("BoxShape3D_7u77a")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D" unique_id=1761324099]
 mesh = SubResource("BoxMesh_bo1nx")
 
-[node name="Sketchfab_Scene" parent="floor/CollisionShape3D" unique_id=968106588 instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6537919, 30.155088, 1.672826)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1951445794]
 environment = SubResource("Environment_bo1nx")
 
 [node name="capsule" type="Node3D" parent="." unique_id=1402568643]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -107.161545, 293.51218, 185.76389)
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -107.161545, 400, 400)
 
 [node name="platform" type="StaticBody3D" parent="capsule" unique_id=1644155028]
 physics_material_override = SubResource("PhysicsMaterial_8gbba")
@@ -108,6 +117,10 @@ shape = SubResource("BoxShape3D_8gbba")
 
 [node name="platform" type="MeshInstance3D" parent="capsule/platform" unique_id=1743857895]
 mesh = SubResource("BoxMesh_jjvhh")
+
+[node name="Camera3D" type="Camera3D" parent="capsule/platform" unique_id=444060933]
+transform = Transform3D(0.8964864, -0.19214186, 0.39924127, 0, 0.90107703, 0.4336591, -0.4430712, -0.38876948, 0.80780333, 0, 4.055298, 0)
+current = true
 
 [node name="glassSphere" type="MeshInstance3D" parent="capsule" unique_id=402812362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238, 0)
@@ -152,5 +165,14 @@ one_shot = true
 [node name="Timer" type="Timer" parent="." unique_id=1253257775]
 process_callback = 0
 wait_time = 10.0
+
+[node name="earth" parent="." unique_id=968106588 instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1.0998834, 0.852224, 2.6578126, -2.7152295, 0.98826265, 0.8067594, -0.64635926, -2.7013042, 1.133653, 0, 100, 0)
+
+[node name="skyInsideEarth" type="MeshInstance3D" parent="earth" unique_id=1459499698]
+transform = Transform3D(0.2444187, -0.6033847, -0.14363547, 0.18938324, 0.2196141, -0.6002903, 0.59062517, 0.1792799, 0.25192297, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_8gbba")
+surface_material_override/0 = SubResource("StandardMaterial3D_jjvhh")
 
 [connection signal="timeout" from="timeBeforePlatformMove" to="." method="_on_time_before_platform_move_timeout"]
