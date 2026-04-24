@@ -43,4 +43,10 @@ func ping():
 #func _on_dropped() -> void:
 	#held_controller = null
 func action():
+	$GPUTrail3D.emitting = true
+	$trailLifetime.start()
 	print("Action button action works!")
+
+
+func _on_trail_lifetime_timeout() -> void:
+	$GPUTrail3D.emitting = false

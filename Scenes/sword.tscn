@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_v4ynp"]
 [ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="6_83fnj"]
 [ext_resource type="Script" uid="uid://0b7wkxi4vymb" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_5uo8h"]
+[ext_resource type="Shader" uid="uid://br836oj342d5v" path="res://GPUTrail-main/shaders/trail.gdshader" id="9_ud72p"]
+[ext_resource type="Shader" uid="uid://vkkfj7b2q8t" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="10_licwk"]
+[ext_resource type="Script" uid="uid://cqa6h3fo67anu" path="res://GPUTrail-main/GPUTrail3D.gd" id="11_pxruu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83fnj"]
-size = Vector3(0.05, 1.6200196, 0.05)
+size = Vector3(0.05, 1.385083, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uo8h"]
 albedo_color = Color(0.017732395, 0.017732395, 0.017732373, 1)
@@ -24,8 +27,8 @@ albedo_color = Color(0.70796657, 0.7079665, 0.7079665, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e4ynd"]
 material = SubResource("StandardMaterial3D_4gx3d")
-top_radius = 0.004
-bottom_radius = 0.01
+top_radius = 0.01
+bottom_radius = 0.02
 height = 0.2
 
 [sub_resource type="Resource" id="Resource_fahsa"]
@@ -56,13 +59,45 @@ size = Vector3(0.06, 0.051, 0.06)
 shading_mode = 0
 albedo_color = Color(1, 1, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swbve"]
+shader = ExtResource("9_ud72p")
+
+[sub_resource type="Gradient" id="Gradient_8ykx0"]
+offsets = PackedFloat32Array(0, 0.68820226)
+colors = PackedColorArray(1, 0.34509805, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dy3nf"]
+gradient = SubResource("Gradient_8ykx0")
+
+[sub_resource type="Curve" id="Curve_ava4e"]
+bake_resolution = 16
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yb50g"]
+curve = SubResource("Curve_ava4e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4ba6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_licwk")
+shader_parameter/mask_strength = 0.5
+shader_parameter/uv_offset = Vector2(0.17568712, 0.99432874)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_dy3nf")
+shader_parameter/curve = SubResource("CurveTexture_yb50g")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 40
+
+[sub_resource type="QuadMesh" id="QuadMesh_mscq6"]
+material = SubResource("ShaderMaterial_s4ba6")
+
 [node name="Sword" unique_id=1973335216 instance=ExtResource("1_74bdg")]
 mass = 5.0
 script = ExtResource("2_4gx3d")
 second_hand_grab = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44287938, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32541108, 0)
 shape = SubResource("BoxShape3D_83fnj")
 
 [node name="handle" type="MeshInstance3D" parent="." index="1" unique_id=1165753940]
@@ -70,7 +105,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 9.052107, 0, -1, 0, -4.371139e-0
 mesh = SubResource("BoxMesh_74bdg")
 
 [node name="blade" type="MeshInstance3D" parent="." index="2" unique_id=1819753817]
-transform = Transform3D(-1.0900215e-07, 0, 0.22687688, 0, 5.977235, 0, -2.4936788, 0, -9.917104e-09, 0, 0.64817995, 0)
+transform = Transform3D(-1.4607901e-06, 0, 0.2268769, 33.41899, -1.02484625e-08, 9.917104e-09, 1.4607905e-06, 0.23445745, 4.334904e-16, 0, 0.35846567, 0)
 mesh = SubResource("CylinderMesh_e4ynd")
 
 [node name="GrabPointHandLeftMain" parent="." index="3" unique_id=399703582 instance=ExtResource("2_dwvek")]
@@ -106,5 +141,26 @@ transform = Transform3D(1, 0, 0, 0, 9.052107, 0, 0, 0, 1, 0, -0.13933444, 0)
 mesh = SubResource("BoxMesh_4gx3d")
 surface_material_override/0 = SubResource("StandardMaterial3D_641iy")
 
+[node name="GPUTrail3D" type="GPUParticles3D" parent="." index="8" unique_id=503804456]
+transform = Transform3D(1, 0, 0, 0, 0.46723607, 0, 0, 0, 1, -0.0017511025, 0.5418376, -0.017493002)
+amount = 20
+lifetime = 20.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ShaderMaterial_swbve")
+draw_pass_1 = SubResource("QuadMesh_mscq6")
+script = ExtResource("11_pxruu")
+length = 20
+length_seconds = 0.3333333333333333
+mask_strength = 0.5
+color_ramp = SubResource("GradientTexture1D_dy3nf")
+curve = SubResource("CurveTexture_yb50g")
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://cqa6h3fo67anu"
+
+[node name="trailLifetime" type="Timer" parent="." index="9" unique_id=1172064484]
+wait_time = 2.0
+
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="timeout" from="trailLifetime" to="." method="_on_trail_lifetime_timeout"]

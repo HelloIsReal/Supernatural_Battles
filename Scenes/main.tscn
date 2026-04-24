@@ -18,6 +18,7 @@ size = Vector3(5, 0.1, 5)
 ambient_light_source = 2
 ambient_light_color = Color(0.98939866, 0.98939866, 0.98939854, 1)
 ambient_light_energy = 5.0
+glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.1455355, 0.1620205, 0.18767142, 1)
 fog_sun_scatter = 0.01
