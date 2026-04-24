@@ -1,10 +1,22 @@
 extends Node3D
 
 @export var arrivalTime = 60
+var xr_interface: XRInterface
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$timeBeforePlatformMove.start()
+	
+	xr_interface = XRServer.find_interface("OpenXR")
+	
+	if xr_interface and xr_interface.is_initialized():
+		print("OpenXR Initialized successfully")
+		
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		
+		get_viewport().use_xr = true
+	else:
+		print("OpenXR not initialized, check if headset is connected")
 
 func _physics_process(delta):
 	$capsule/countdownTimer/Label3D.text = "T-Minus: \n %.1f" %  $Timer.time_left

@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://b8863e6wit7il"]
 
 [ext_resource type="Shader" uid="uid://bjy5nbwtu4gi6" path="res://shaders/fireParticlesShader.tres" id="1_dobhm"]
+[ext_resource type="Texture2D" uid="uid://v4lk8vsxle2e" path="res://GAP_Fire_Textures/Flame01.png" id="2_1u3lj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1u3lj"]
 render_priority = 0
 shader = ExtResource("1_dobhm")
+shader_parameter/MainTex = ExtResource("2_1u3lj")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0xkv"]
 gravity = Vector3(0, 0, 0)
+color = Color(1.0991465, 0.24219732, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_7sra0"]
 

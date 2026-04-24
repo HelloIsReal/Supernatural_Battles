@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5lbbny2tprw"]
 
-[ext_resource type="Script" uid="uid://8t2hi6onuxtk" path="res://Scripts/main.gd" id="1_vhp3c"]
+[ext_resource type="Script" uid="uid://8t2hi6onuxtk" path="res://Scripts/tutorialMain.gd" id="1_vhp3c"]
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="3_t0sxt"]
 [ext_resource type="PackedScene" uid="uid://dcnba8u2qp7h1" path="res://Scenes/rock_climb_object.tscn" id="4_r8bqt"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_qbi1s"]
