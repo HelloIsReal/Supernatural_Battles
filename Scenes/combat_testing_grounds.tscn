@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://yt3upetbi7cl"]
+
+[ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_qkb8l"]
+[ext_resource type="PackedScene" uid="uid://b1xiv0kmvr0g0" path="res://Scenes/sword.tscn" id="2_o8f4f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8f4f"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhp3c"]
+albedo_color = Color(0.29586652, 0.2958665, 0.2958665, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7u7ce"]
+material = SubResource("StandardMaterial3D_vhp3c")
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2ifq"]
+material = SubResource("StandardMaterial3D_0xm2m")
+size = Vector3(2, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c04c2"]
+size = Vector3(2, 1, 0.5)
+
+[node name="combatTestingGrounds" type="Node3D" unique_id=38845768]
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1605757733]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=456210506]
+shape = SubResource("BoxShape3D_o8f4f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D" unique_id=1227991661]
+mesh = SubResource("BoxMesh_7u7ce")
+
+[node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_qkb8l")]
+
+[node name="Table" type="MeshInstance3D" parent="XROrigin3D" unique_id=1486535462]
+transform = Transform3D(1.6002152, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3572693, -2.6603355)
+mesh = SubResource("BoxMesh_i2ifq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="XROrigin3D/Table" unique_id=2091884608]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Table/StaticBody3D" unique_id=2062412573]
+shape = SubResource("BoxShape3D_c04c2")
+
+[node name="Sword" parent="XROrigin3D" unique_id=1973335216 instance=ExtResource("2_o8f4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.052, -2.781)

@@ -24,11 +24,11 @@ tonemap_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(5, 0.1, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhp3c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pdc7"]
 albedo_color = Color(0.29586652, 0.2958665, 0.2958665, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
-material = SubResource("StandardMaterial3D_vhp3c")
+material = SubResource("StandardMaterial3D_2pdc7")
 size = Vector3(5, 0.1, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]

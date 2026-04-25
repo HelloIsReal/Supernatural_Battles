@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://0b7wkxi4vymb" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_5uo8h"]
 [ext_resource type="Shader" uid="uid://br836oj342d5v" path="res://GPUTrail-main/shaders/trail.gdshader" id="9_ud72p"]
 [ext_resource type="Shader" uid="uid://vkkfj7b2q8t" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="10_licwk"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="11_licwk"]
 [ext_resource type="Script" uid="uid://cqa6h3fo67anu" path="res://GPUTrail-main/GPUTrail3D.gd" id="11_pxruu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83fnj"]
@@ -81,8 +82,9 @@ curve = SubResource("Curve_ava4e")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("10_licwk")
+shader_parameter/tex = ExtResource("11_licwk")
 shader_parameter/mask_strength = 0.5
-shader_parameter/uv_offset = Vector2(0.17568712, 0.99432874)
+shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_dy3nf")
 shader_parameter/curve = SubResource("CurveTexture_yb50g")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -105,7 +107,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 9.052107, 0, -1, 0, -4.371139e-0
 mesh = SubResource("BoxMesh_74bdg")
 
 [node name="blade" type="MeshInstance3D" parent="." index="2" unique_id=1819753817]
-transform = Transform3D(-1.4607901e-06, 0, 0.2268769, 33.41899, -1.02484625e-08, 9.917104e-09, 1.4607905e-06, 0.23445745, 4.334904e-16, 0, 0.35846567, 0)
+transform = Transform3D(-1.46079e-06, 1.0248462e-08, 0.2268769, 33.41899, -1.0248461e-08, 9.917102e-09, 1.4607906e-06, 0.23445745, -9.9171045e-09, 0, 0.35846567, 0)
 mesh = SubResource("CylinderMesh_e4ynd")
 
 [node name="GrabPointHandLeftMain" parent="." index="3" unique_id=399703582 instance=ExtResource("2_dwvek")]
@@ -143,15 +145,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_641iy")
 
 [node name="GPUTrail3D" type="GPUParticles3D" parent="." index="8" unique_id=503804456]
 transform = Transform3D(1, 0, 0, 0, 0.46723607, 0, 0, 0, 1, -0.0017511025, 0.5418376, -0.017493002)
-amount = 20
-lifetime = 20.0
+amount = 10
+lifetime = 10.0
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ShaderMaterial_swbve")
 draw_pass_1 = SubResource("QuadMesh_mscq6")
 script = ExtResource("11_pxruu")
-length = 20
-length_seconds = 0.3333333333333333
+length = 10
+length_seconds = 0.16666666666666666
 mask_strength = 0.5
 color_ramp = SubResource("GradientTexture1D_dy3nf")
 curve = SubResource("CurveTexture_yb50g")
