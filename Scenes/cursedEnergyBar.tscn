@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://clnvfm4g4vln7"]
+
+[ext_resource type="Script" uid="uid://bh755lynthruy" path="res://Scenes/cursed_energy_bar.gd" id="1_x3lee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnjlb"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3lee"]
+bg_color = Color(0.12156863, 0, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="CursedBarProgress" type="ProgressBar" unique_id=1388575396]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -13.5
+offset_right = 90.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_rnjlb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x3lee")
+step = 1.0
+value = 100.0
+show_percentage = false
+script = ExtResource("1_x3lee")

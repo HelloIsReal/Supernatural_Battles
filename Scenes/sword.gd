@@ -1,9 +1,12 @@
 @tool extends XRToolsPickable 
 
+
 #signal controllerInput(XRController3D)
 #test to see if works
 #var held_by = null
 #var held_controller : XRController3D = null
+func _ready():
+	$GPUTrail3D.visible = false
 
 func _physics_process(_delta: float) -> void:
 	if get_picked_up_by_controller():
@@ -43,10 +46,14 @@ func ping():
 #func _on_dropped() -> void:
 	#held_controller = null
 func action():
-	$GPUTrail3D.emitting = true
-	$trailLifetime.start()
-	print("Action button action works!")
+	if $trailLifetime.is_stopped() and Globals.cursedEnergyAmount >= 10:
+		$trailLifetime.start()
+		$flameSounds.play()
+		Globals.cursedEnergyAmount -= 10
+		$GPUTrail3D.visible = true
+		print("Action button action works!")
 
 
 func _on_trail_lifetime_timeout() -> void:
-	$GPUTrail3D.emitting = false
+	$GPUTrail3D.visible = false
+	$flameSounds.stop()

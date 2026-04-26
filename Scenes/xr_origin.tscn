@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_fnnc4"]
 [ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="4_owk0p"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_e2qbk"]
+[ext_resource type="PackedScene" uid="uid://clnvfm4g4vln7" path="res://Scenes/cursedEnergyBar.tscn" id="5_r1pme"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_yyaeh"]
 [ext_resource type="Script" uid="uid://ctkq2bur6p8kw" path="res://Scripts/controllerDefaults.gd" id="7_2texp"]
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_g3ggb"]
@@ -37,6 +38,9 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_r1pme"]
 material = SubResource("StandardMaterial3D_r1pme")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r1pme"]
+viewport_path = NodePath("LeftHand/LeftHand/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1pme"]
 size = Vector3(0.095329285, 0.16381836, 0.20827866)
@@ -68,6 +72,17 @@ amount = 6
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_1cx2o")
 draw_pass_1 = SubResource("QuadMesh_r1pme")
+
+[node name="SubViewport" type="SubViewport" parent="LeftHand/LeftHand" unique_id=429780306]
+transparent_bg = true
+size_2d_override = Vector2i(512, 512)
+
+[node name="CursedBarProgress" parent="LeftHand/LeftHand/SubViewport" unique_id=1388575396 instance=ExtResource("5_r1pme")]
+
+[node name="Sprite3D" type="Sprite3D" parent="LeftHand/LeftHand" unique_id=1687763744]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.03864841, 0.002093818, 0.019975469)
+axis = 0
+texture = SubResource("ViewportTexture_r1pme")
 
 [node name="MovementDirect" parent="LeftHand" unique_id=732449142 instance=ExtResource("2_v0u4l")]
 strafe = true

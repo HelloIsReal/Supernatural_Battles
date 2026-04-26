@@ -34,6 +34,11 @@ project/assembly_name="Godot Xr tutorial"
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+playerAttack="Anything in this group damages the enemy"
+floor=""
+
 [layer_names]
 
 3d_physics/layer_1="Static World"

@@ -12,9 +12,10 @@
 [ext_resource type="Shader" uid="uid://vkkfj7b2q8t" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="10_licwk"]
 [ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="11_licwk"]
 [ext_resource type="Script" uid="uid://cqa6h3fo67anu" path="res://GPUTrail-main/GPUTrail3D.gd" id="11_pxruu"]
+[ext_resource type="AudioStream" uid="uid://cad1hrmiq61o2" path="res://Scripts/FIRE SOUND EFFECT IN HIGH QUALITY Cut.mp3" id="13_pxruu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83fnj"]
-size = Vector3(0.05, 1.385083, 0.05)
+size = Vector3(0.05, 0.45084226, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uo8h"]
 albedo_color = Color(0.017732395, 0.017732395, 0.017732373, 1)
@@ -88,18 +89,21 @@ shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_dy3nf")
 shader_parameter/curve = SubResource("CurveTexture_yb50g")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-shader_parameter/flags = 40
+shader_parameter/flags = 56
 
 [sub_resource type="QuadMesh" id="QuadMesh_mscq6"]
 material = SubResource("ShaderMaterial_s4ba6")
 
-[node name="Sword" unique_id=1973335216 instance=ExtResource("1_74bdg")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_licwk"]
+size = Vector3(0.05, 1.407964, 0.05)
+
+[node name="Sword" unique_id=1973335216 groups=["playerAttack"] instance=ExtResource("1_74bdg")]
 mass = 5.0
 script = ExtResource("2_4gx3d")
 second_hand_grab = 2
 
-[node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32541108, 0)
+[node name="CollisionShape3D" parent="." index="0" groups=["playerAttack"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14170927, 0)
 shape = SubResource("BoxShape3D_83fnj")
 
 [node name="handle" type="MeshInstance3D" parent="." index="1" unique_id=1165753940]
@@ -107,7 +111,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 9.052107, 0, -1, 0, -4.371139e-0
 mesh = SubResource("BoxMesh_74bdg")
 
 [node name="blade" type="MeshInstance3D" parent="." index="2" unique_id=1819753817]
-transform = Transform3D(-1.46079e-06, 1.0248462e-08, 0.2268769, 33.41899, -1.0248461e-08, 9.917102e-09, 1.4607906e-06, 0.23445745, -9.9171045e-09, 0, 0.35846567, 0)
+transform = Transform3D(6.385318e-14, -1.0248461e-08, 0.2268769, -33.41899, -1.0248461e-08, 0, 1.4607905e-06, -0.23445745, -9.9171045e-09, 0, 0.35846567, 0)
 mesh = SubResource("CylinderMesh_e4ynd")
 
 [node name="GrabPointHandLeftMain" parent="." index="3" unique_id=399703582 instance=ExtResource("2_dwvek")]
@@ -145,23 +149,39 @@ surface_material_override/0 = SubResource("StandardMaterial3D_641iy")
 
 [node name="GPUTrail3D" type="GPUParticles3D" parent="." index="8" unique_id=503804456]
 transform = Transform3D(1, 0, 0, 0, 0.46723607, 0, 0, 0, 1, -0.0017511025, 0.5418376, -0.017493002)
-amount = 10
-lifetime = 10.0
+amount = 20
+lifetime = 20.0
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ShaderMaterial_swbve")
 draw_pass_1 = SubResource("QuadMesh_mscq6")
 script = ExtResource("11_pxruu")
-length = 10
-length_seconds = 0.16666666666666666
+length = 20
+length_seconds = 0.3333333333333333
 mask_strength = 0.5
 color_ramp = SubResource("GradientTexture1D_dy3nf")
 curve = SubResource("CurveTexture_yb50g")
+snap_to_transform = true
 _defaults_have_been_set = true
 metadata/_custom_type_script = "uid://cqa6h3fo67anu"
 
 [node name="trailLifetime" type="Timer" parent="." index="9" unique_id=1172064484]
-wait_time = 2.0
+wait_time = 3.0
+one_shot = true
+
+[node name="swordCollision" type="CollisionShape3D" parent="." index="10" unique_id=1537101326 groups=["playerAttack"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32522696, 0)
+shape = SubResource("BoxShape3D_licwk")
+
+[node name="hurtBox" type="Area3D" parent="." index="11" unique_id=1635850547 groups=["playerAttack"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtBox" index="0" unique_id=1125344376 groups=["playerAttack"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55581534, 0)
+shape = SubResource("BoxShape3D_licwk")
+
+[node name="flameSounds" type="AudioStreamPlayer3D" parent="." index="12" unique_id=49723544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4949116, 0)
+stream = ExtResource("13_pxruu")
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]

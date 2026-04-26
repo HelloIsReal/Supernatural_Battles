@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://jub3gaovngcj"]
+
+[ext_resource type="Script" uid="uid://becio5dyc35vp" path="res://Scenes/enemy.gd" id="1_vqdfm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0etxt"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_vqdfm"]
+size = Vector3(1, 2, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mhjvr"]
+size = Vector3(3, 0.3, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_akjf0"]
+size = Vector3(1, 0.3, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3hkj3"]
+size = Vector3(1, 0.3, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etiev"]
+size = Vector3(2.8765564, 3.4002686, 0.6352234)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vqdfm"]
+size = Vector3(2.948532, 3.6371155, 0.7212448)
+
+[node name="enemy" type="CharacterBody3D" unique_id=593049408]
+script = ExtResource("1_vqdfm")
+
+[node name="head" type="MeshInstance3D" parent="." unique_id=1825960399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4296961, 0)
+mesh = SubResource("SphereMesh_0etxt")
+
+[node name="body" type="MeshInstance3D" parent="." unique_id=185786034]
+mesh = SubResource("BoxMesh_vqdfm")
+
+[node name="arms" type="MeshInstance3D" parent="." unique_id=2126926701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_mhjvr")
+
+[node name="leg1" type="MeshInstance3D" parent="." unique_id=1048103765]
+transform = Transform3D(0.17364822, -0.9848077, 0, 0.9848077, 0.17364822, 0, 0, 0, 1, -0.4, -1.25, 0)
+mesh = SubResource("BoxMesh_akjf0")
+
+[node name="leg2" type="MeshInstance3D" parent="." unique_id=992624493]
+transform = Transform3D(0.17364821, 0.98480767, 0, -0.98480767, 0.17364821, 0, 0, 0, 1, 0.4, -1.25, 0)
+mesh = SubResource("BoxMesh_3hkj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=987810665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029312134, -0.0056762695, 0.053359985)
+shape = SubResource("BoxShape3D_etiev")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1093701280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0847266, 0)
+text = "10/10HP"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=724089497]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1679031727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04361725, 0.011642456, -0.025783539)
+shape = SubResource("BoxShape3D_vqdfm")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
