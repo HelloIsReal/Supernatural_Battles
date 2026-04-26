@@ -34,5 +34,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_rnjlb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x3lee")
 step = 1.0
 value = 100.0
-show_percentage = false
 script = ExtResource("1_x3lee")

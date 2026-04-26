@@ -1,16 +1,24 @@
 @tool extends XRToolsPickable 
 
-
+var onFire=false
+@export var cursedEnergyDrainAmount = 2
+@export var cursedEnergyDrainTime = 0.5
 #signal controllerInput(XRController3D)
 #test to see if works
 #var held_by = null
 #var held_controller : XRController3D = null
 func _ready():
+	super() # this is needed, or else the Pickable.gd script this script is extending wont function correctly
 	$GPUTrail3D.visible = false
+	$tickTime.wait_time = cursedEnergyDrainTime
 
 func _physics_process(_delta: float) -> void:
 	if get_picked_up_by_controller():
 		pass
+		
+	if onFire and Globals.cursedEnergyAmount <= cursedEnergyDrainAmount:
+		onFire=false
+		
 		#print("sword picked up!")
 	#if is_picked_up():
 		#print("I am awake~!")
@@ -46,14 +54,27 @@ func ping():
 #func _on_dropped() -> void:
 	#held_controller = null
 func action():
-	if $trailLifetime.is_stopped() and Globals.cursedEnergyAmount >= 10:
-		$trailLifetime.start()
-		$flameSounds.play()
-		Globals.cursedEnergyAmount -= 10
+	if !onFire and Globals.cursedEnergyAmount > cursedEnergyDrainAmount:
+		onFire=true
 		$GPUTrail3D.visible = true
-		print("Action button action works!")
+		Globals.cursedEnergyInUse=true
+		$tickTime.start()
+		$flameSounds.play()
+		print("Fire on")
+	elif onFire:
+		turnOffFire()
 
+func _on_tick_time_timeout():
+	Globals.cursedEnergyAmount -= cursedEnergyDrainAmount
 
-func _on_trail_lifetime_timeout() -> void:
-	$GPUTrail3D.visible = false
+func turnOffFire():
+	onFire=false
+	Globals.cursedEnergyInUse=false
+	$tickTime.stop()
 	$flameSounds.stop()
+	$GPUTrail3D.visible = false
+	print("Fire off")
+
+
+func _on_released(pickable, by):
+	turnOffFire()

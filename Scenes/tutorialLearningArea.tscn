@@ -13,12 +13,12 @@
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
+[sub_resource type="Sky" id="Sky_2pdc7"]
 sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 2
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_2pdc7")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
@@ -68,6 +68,9 @@ environment = SubResource("Environment_1bvp3")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=801488518]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("7_eyfwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15201104, 1.051581, 0.62306696)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=554585540]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.05, 0)
@@ -276,9 +279,6 @@ material = SubResource("StandardMaterial3D_ynf5e")
 transparent = 1
 unshaded = true
 scene_properties_keys = PackedStringArray()
-
-[node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("7_eyfwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15201104, 1.051581, 0.62306696)
 
 [node name="boombox" parent="." unique_id=1316423025 instance=ExtResource("8_6eadw")]
 transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.97919476, 1.0940651, 0.77841794)

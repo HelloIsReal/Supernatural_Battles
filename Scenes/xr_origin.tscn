@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ces1j6plojyra" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="1_2texp"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_jw5w6"]
+[ext_resource type="Script" uid="uid://dax7qr57vs0ko" path="res://Scenes/player_main_controller.gd" id="2_potwm"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_rturn"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_v0u4l"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_3hom5"]
@@ -56,6 +57,12 @@ metadata/_custom_type_script = "uid://cjfu28jmrajlo"
 [node name="XROrigin3D" type="XROrigin3D" unique_id=503226863]
 script = ExtResource("1_2texp")
 
+[node name="playerMainController" type="Node3D" parent="." unique_id=125839558]
+script = ExtResource("2_potwm")
+
+[node name="cursedEnergyRefillTick" type="Timer" parent="playerMainController" unique_id=316960603]
+wait_time = 0.1
+
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1211235657]
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=1928806945 node_paths=PackedStringArray("handParticles")]
@@ -80,7 +87,7 @@ size_2d_override = Vector2i(512, 512)
 [node name="CursedBarProgress" parent="LeftHand/LeftHand/SubViewport" unique_id=1388575396 instance=ExtResource("5_r1pme")]
 
 [node name="Sprite3D" type="Sprite3D" parent="LeftHand/LeftHand" unique_id=1687763744]
-transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.03864841, 0.002093818, 0.019975469)
+transform = Transform3D(-0.04, -3.496911e-09, 0, 3.496911e-09, -0.04, 0, 0, 0, 0.04, -0.03864841, 0.002093818, 0.019975469)
 axis = 0
 texture = SubResource("ViewportTexture_r1pme")
 
@@ -148,6 +155,7 @@ ground_control = 2
 [node name="MovementFlight" parent="." unique_id=72380258 instance=ExtResource("12_1cx2o")]
 enabled = false
 
+[connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="playerMainController" method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="has_dropped" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_dropped"]
 [connection signal="has_picked_up" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_picked_up"]
 [connection signal="button_pressed" from="RightHand" to="." method="_on_right_hand_button_pressed"]
