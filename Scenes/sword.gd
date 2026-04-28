@@ -3,6 +3,8 @@
 var onFire=false
 @export var cursedEnergyDrainAmount = 2
 @export var cursedEnergyDrainTime = 0.5
+var cursedEnergydmgmultiplier = 2
+var baseDamage = 2
 #signal controllerInput(XRController3D)
 #test to see if works
 #var held_by = null
@@ -55,12 +57,14 @@ func ping():
 	#held_controller = null
 func action():
 	if !onFire and Globals.cursedEnergyAmount > cursedEnergyDrainAmount:
+		Globals.swordDamage = baseDamage * cursedEnergydmgmultiplier
 		onFire=true
 		$GPUTrail3D.visible = true
 		Globals.cursedEnergyInUse=true
 		$tickTime.start()
 		$flameSounds.play()
 		print("Fire on")
+		
 	elif onFire:
 		turnOffFire()
 
@@ -68,6 +72,7 @@ func _on_tick_time_timeout():
 	Globals.cursedEnergyAmount -= cursedEnergyDrainAmount
 
 func turnOffFire():
+	Globals.swordDamage = baseDamage
 	onFire=false
 	Globals.cursedEnergyInUse=false
 	$tickTime.stop()
