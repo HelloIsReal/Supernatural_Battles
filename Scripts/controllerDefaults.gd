@@ -5,7 +5,8 @@ signal released
 
 
 @export var threshold: float = 0.9
-@export var handParticles: GPUParticles3D
+#@export var handParticles: GPUParticles3D
+@export var handParticles: Node3D
 
 var held_object = null
 
@@ -32,9 +33,11 @@ func _physics_process(_delta):
 	#is_sword = get_float("grip") > threshold and is_button_pressed("by_button")
 #	print(self.velocity)
 	if(is_energy):
-		handParticles.emitting = true
+		#handParticles.emitting = true
+		handParticles.visible = true
 	else:
-		handParticles.emitting = false
+		#handParticles.emitting = false
+		handParticles.visible = false
 	#if(get_float("grip") > threshold and is_button_pressed("by_button") and held_object.name=="Sword"):
 		#print("hooray!")
 		#$FunctionPickup.action_button_action()

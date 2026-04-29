@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://b8863e6wit7il"]
+
+[ext_resource type="Script" uid="uid://gklf6ufnv811" path="res://Scenes/fireParticles.gd" id="1_qs214"]
+[ext_resource type="Shader" uid="uid://bjy5nbwtu4gi6" path="res://shaders/fireParticlesShader.tres" id="2_b8hnp"]
+[ext_resource type="Texture2D" uid="uid://v4lk8vsxle2e" path="res://GAP_Fire_Textures/Flame01.png" id="3_e36rm"]
+[ext_resource type="Texture2D" uid="uid://bw8kv88hap16h" path="res://fireParticle.png" id="4_2ywwf"]
+[ext_resource type="Texture2D" uid="uid://cocs7c6emeyqo" path="res://fireEmber.PNG" id="5_38fjb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1u3lj"]
+render_priority = 0
+shader = ExtResource("2_b8hnp")
+shader_parameter/MainTex = ExtResource("3_e36rm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0xkv"]
+gravity = Vector3(0, 0, 0)
+color = Color(4, 0.242, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_7sra0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sra0"]
+transparency = 1
+blend_mode = 4
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_2ywwf")
+albedo_texture_force_srgb = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_j0xkv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.47688565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7sra0"]
+curve = SubResource("Curve_j0xkv")
+
+[sub_resource type="Gradient" id="Gradient_j0xkv"]
+offsets = PackedFloat32Array(0.19708994, 0.52248675, 0.8267196)
+colors = PackedColorArray(1, 1, 1, 1, 1.347661e-06, 0.7574011, 0.95924836, 1, 0.032967977, 0.032967992, 0.03296798, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7sra0"]
+gradient = SubResource("Gradient_j0xkv")
+
+[sub_resource type="Curve" id="Curve_kovvu"]
+_data = [Vector2(0, 0.4809844), 0.0, 0.89883167, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dgsyw"]
+curve = SubResource("Curve_kovvu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7sra0"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 0.49997765
+gravity = Vector3(0, 1, 0)
+scale_min = 0.9
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_dgsyw")
+color = Color(0, 0.9511837, 1.3069701, 1)
+color_ramp = SubResource("GradientTexture1D_7sra0")
+alpha_curve = SubResource("CurveTexture_7sra0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kovvu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0xkv"]
+render_priority = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("5_38fjb")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_7sra0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2189781, 0.9906104), 0.0, 0.0, 0, 0, Vector2(0.29683697, 0.51173717), 0.0, 0.0, 0, 0, Vector2(0.38929442, 1), 0.0, 0.0, 0, 0, Vector2(0.49878344, 0.830986), 0.0, 0.0, 0, 0, Vector2(0.68613136, 0.21596253), 0.0, 0.0, 0, 0, Vector2(0.76642334, 0.92018783), 0.0, 0.0, 0, 0, Vector2(1, 0.28169018), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_kovvu"]
+curve = SubResource("Curve_7sra0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kovvu"]
+lifetime_randomness = 0.1
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 0.6
+emission_ring_inner_radius = 0.4
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.08
+scale_curve = SubResource("CurveTexture_kovvu")
+color = Color(0.37113458, 0.94746435, 1.4190066, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dgsyw"]
+
+[node name="fireParticlesTemplate" type="Node3D" unique_id=1854443140]
+script = ExtResource("1_qs214")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1929690532]
+visible = false
+material_override = SubResource("ShaderMaterial_1u3lj")
+amount = 1
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_j0xkv")
+draw_pass_1 = SubResource("QuadMesh_7sra0")
+
+[node name="fire" type="GPUParticles3D" parent="." unique_id=946250812]
+material_override = SubResource("StandardMaterial3D_7sra0")
+amount = 50
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_7sra0")
+draw_pass_1 = SubResource("QuadMesh_kovvu")
+
+[node name="sparks" type="GPUParticles3D" parent="." unique_id=472650010]
+material_override = SubResource("StandardMaterial3D_j0xkv")
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_kovvu")
+draw_pass_1 = SubResource("QuadMesh_dgsyw")

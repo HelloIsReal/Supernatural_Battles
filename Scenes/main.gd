@@ -30,7 +30,7 @@ func _on_time_before_platform_move_timeout():
 	var tween = get_tree().create_tween()
 	tween.tween_property($capsule, "position", Vector3(-100,300,300), 10)
 	await tween.finished
-	print("??? Thruster issue")
+	print("??? Thruster issue") # add cutscene that shows something before crashlanding into earth
 	await create_tween().tween_interval(3).finished
 	tween = get_tree().create_tween()
 	tween.tween_property($capsule, "position", Vector3(0,100,0), arrivalTime-20)

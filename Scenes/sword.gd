@@ -12,14 +12,15 @@ var baseDamage = 2
 func _ready():
 	super() # this is needed, or else the Pickable.gd script this script is extending wont function correctly
 	$GPUTrail3D.visible = false
+	$swordParticles.visible = false
 	$tickTime.wait_time = cursedEnergyDrainTime
 
 func _physics_process(_delta: float) -> void:
 	if get_picked_up_by_controller():
 		pass
 		
-	if onFire and Globals.cursedEnergyAmount <= cursedEnergyDrainAmount:
-		onFire=false
+	if onFire and Globals.cursedEnergyAmount < cursedEnergyDrainTime:
+		turnOffFire()
 		
 		#print("sword picked up!")
 	#if is_picked_up():
@@ -56,17 +57,20 @@ func ping():
 #func _on_dropped() -> void:
 	#held_controller = null
 func action():
-	if !onFire and Globals.cursedEnergyAmount > cursedEnergyDrainAmount:
+	
+	if onFire:
+		turnOffFire()
+	elif !onFire and Globals.cursedEnergyAmount > cursedEnergyDrainAmount:
 		Globals.swordDamage = baseDamage * cursedEnergydmgmultiplier
 		onFire=true
 		$GPUTrail3D.visible = true
+		$swordParticles.visible = true
 		Globals.cursedEnergyInUse=true
 		$tickTime.start()
 		$flameSounds.play()
 		print("Fire on")
 		
-	elif onFire:
-		turnOffFire()
+	
 
 func _on_tick_time_timeout():
 	Globals.cursedEnergyAmount -= cursedEnergyDrainAmount
@@ -78,6 +82,7 @@ func turnOffFire():
 	$tickTime.stop()
 	$flameSounds.stop()
 	$GPUTrail3D.visible = false
+	$swordParticles.visible = false
 	print("Fire off")
 
 
