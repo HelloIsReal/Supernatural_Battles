@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_qkb8l"]
 [ext_resource type="PackedScene" uid="uid://b1xiv0kmvr0g0" path="res://Scenes/sword.tscn" id="2_o8f4f"]
-[ext_resource type="PackedScene" uid="uid://jub3gaovngcj" path="res://Scenes/enemyTemplate.tscn" id="3_7u7ce"]
+[ext_resource type="PackedScene" uid="uid://cf3k15qt563so" path="res://Scenes/newEnemy.tscn" id="4_c04c2"]
 [ext_resource type="PackedScene" uid="uid://uejbqgsbuhk2" path="res://Scenes/speakersPickable.tscn" id="4_i2ifq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8f4f"]
@@ -48,9 +48,6 @@ shape = SubResource("BoxShape3D_o8f4f")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D" unique_id=1227991661]
 mesh = SubResource("BoxMesh_7u7ce")
 
-[node name="enemy" parent="." unique_id=593049408 instance=ExtResource("3_7u7ce")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.9106011, 1.9088855)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=710145105]
 environment = SubResource("Environment_i2ifq")
 
@@ -70,3 +67,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3284432, -2.6454341)
 
 [node name="PickableObject" parent="." unique_id=1316423025 instance=ExtResource("4_i2ifq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.718276, 1.019275, -2.6831987)
+
+[node name="enemy" parent="." unique_id=593049408 instance=ExtResource("4_c04c2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.6523907, 2.4483557)

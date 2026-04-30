@@ -6,6 +6,10 @@ const JUMP_VELOCITY = 4.5
 
 var enemyHealth = 10
 
+func _ready() -> void:
+	# used to check if this enemy has loaded. Mainly for inherited scenes.
+	print($".".name," loaded!")
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():

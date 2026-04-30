@@ -106,7 +106,7 @@ script = ExtResource("1_tetgu")
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_7sra0")
 amount = 30
-lifetime = 0.8
+speed_scale = 1.5
 process_material = SubResource("ParticleProcessMaterial_7sra0")
 draw_pass_1 = SubResource("QuadMesh_kovvu")
 
