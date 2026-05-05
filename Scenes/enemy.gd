@@ -34,16 +34,12 @@ func _physics_process(delta):
 
 
 func _on_area_3d_body_entered(body):
-	#if body.is_in_group("playerAttack"):
-		#print("ahhhh")
-	#if body.is_in_group("floor"):
-		#print("yes da floor hahaha")
-	#print("body",body)
 	print(body.get_groups())
 
 
 func _on_area_3d_area_entered(area):
-	if area.is_in_group("playerAttack"):
+	if area.is_in_group("playerAttack") and $invincibilityCooldown.is_stopped():
+		$invincibilityCooldown.start()
 		enemyHealth = enemyHealth - Globals.swordDamage
 		print("ouch")
 	$Label3D.text = "Health: %.1f" % enemyHealth

@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://cf3k15qt563so"]
+
+[ext_resource type="Script" uid="uid://i26p7pvcf322" path="res://Scenes/firstBoss.gd" id="1_fmmnk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etiev"]
+size = Vector3(1.0167599, 1.9441986, 0.84690857)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vqdfm"]
+size = Vector3(1.8470154, 1.8320007, 1.0830078)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fmmnk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gyv2n"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ckjwh"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Animation" id="Animation_8fpin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("energySpin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energySpin/red:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("energySpin/blue:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("energySpin/green:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ab6w"]
+resource_name = "energyHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("energySpin/red:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energySpin/blue:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 1), Color(0, 0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("energySpin/green:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(0, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s7hp4"]
+resource_name = "energyShow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("energySpin/red:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energySpin/blue:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 0), Color(0, 0, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("energySpin/green:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 0), Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l2ouv"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("energySpin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7hp4"]
+_data = {
+&"RESET": SubResource("Animation_8fpin"),
+&"energyHide": SubResource("Animation_5ab6w"),
+&"energyShow": SubResource("Animation_s7hp4"),
+&"spin": SubResource("Animation_l2ouv")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ab6w"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ajevy"]
+material = SubResource("StandardMaterial3D_5ab6w")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veu6x"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_owon5"]
+material = SubResource("StandardMaterial3D_veu6x")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gn8ff"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qsh4v"]
+material = SubResource("StandardMaterial3D_gn8ff")
+radius = 0.1
+height = 0.2
+
+[node name="enemy" type="CharacterBody3D" unique_id=593049408]
+script = ExtResource("1_fmmnk")
+
+[node name="invincibilityCooldown" type="Timer" parent="." unique_id=397189476]
+wait_time = 0.3
+one_shot = true
+
+[node name="physics" type="CollisionShape3D" parent="." unique_id=987810665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029312134, -0.0056762695, 0.053359985)
+shape = SubResource("BoxShape3D_etiev")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1093701280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0847266, 0)
+text = "10/10HP"
+
+[node name="hitbox" type="Area3D" parent="." unique_id=724089497]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=532474539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011856079, 0.03211975, -0.041503906)
+shape = SubResource("BoxShape3D_vqdfm")
+
+[node name="model" type="Node3D" parent="." unique_id=1985393849]
+
+[node name="body" type="MeshInstance3D" parent="model" unique_id=21792402]
+mesh = SubResource("CapsuleMesh_fmmnk")
+
+[node name="rightHand" type="MeshInstance3D" parent="model" unique_id=73649130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+mesh = SubResource("SphereMesh_gyv2n")
+
+[node name="leftHand" type="MeshInstance3D" parent="model" unique_id=14315426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+mesh = SubResource("SphereMesh_ckjwh")
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=710939821]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.531, 0.51)
+text = ">:("
+font_size = 64
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="." unique_id=1609056547]
+reset_on_save = false
+libraries/ = SubResource("AnimationLibrary_s7hp4")
+autoplay = &"RESET"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=2045448997]
+reset_on_save = false
+libraries/ = SubResource("AnimationLibrary_s7hp4")
+autoplay = &"RESET"
+
+[node name="energySpin" type="Node3D" parent="." unique_id=696927453]
+
+[node name="red" type="MeshInstance3D" parent="energySpin" unique_id=370215719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0594013, 0, 0)
+mesh = SubResource("SphereMesh_ajevy")
+
+[node name="blue" type="MeshInstance3D" parent="energySpin" unique_id=497492370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4773369, 0, -1.4738758)
+mesh = SubResource("SphereMesh_owon5")
+
+[node name="green" type="MeshInstance3D" parent="energySpin" unique_id=1382087594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.91585195, 0, 1.8641002)
+mesh = SubResource("SphereMesh_qsh4v")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_area_3d_body_entered"]
