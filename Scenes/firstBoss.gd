@@ -1,6 +1,7 @@
 extends "res://Scenes/enemy.gd"
 
 const laserAttackLength = 3
+@onready var bulletProjectile = preload("res://Scripts/enemy_projectile.tscn")
 
 
 func _ready() -> void:
@@ -35,3 +36,8 @@ func laserShot():
 	await get_tree().create_timer(laserAttackLength).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
+
+func _on_attack_cooldown_timeout() -> void:
+	var projectile = bulletProjectile.instantiate()
+	#projectile.homing = true
+	add_child(projectile)

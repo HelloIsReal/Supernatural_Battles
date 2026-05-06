@@ -55,7 +55,9 @@ script = ExtResource("9_g3ggb")
 jump_velocity = 4.0
 metadata/_custom_type_script = "uid://cjfu28jmrajlo"
 
-[node name="XROrigin3D" type="XROrigin3D" unique_id=503226863]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u2me7"]
+
+[node name="XROrigin3D" type="XROrigin3D" unique_id=503226863 groups=["player"]]
 script = ExtResource("1_2texp")
 
 [node name="playerMainController" type="Node3D" parent="." unique_id=125839558]
@@ -145,6 +147,7 @@ grab_distance = 0.2
 
 [node name="MovementJump" parent="RightHand" unique_id=1463706619 instance=ExtResource("6_yyaeh")]
 jump_button_action = "ax_button"
+enabled = false
 
 [node name="MovementClimb" parent="RightHand" unique_id=322940800 instance=ExtResource("4_owk0p")]
 
@@ -165,6 +168,12 @@ ground_control = 2
 
 [node name="MovementFlight" parent="." unique_id=72380258 instance=ExtResource("12_1cx2o")]
 enabled = false
+
+[node name="playerHitbox" type="Area3D" parent="." unique_id=183730614 groups=["player"]]
+collision_layer = 524288
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerHitbox" unique_id=1416333302 groups=["player"]]
+shape = SubResource("CapsuleShape3D_u2me7")
 
 [connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="playerMainController" method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="has_dropped" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_dropped"]

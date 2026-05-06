@@ -10,7 +10,10 @@ size = Vector3(1.8470154, 1.8320007, 1.0830078)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fmmnk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fpin"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_gyv2n"]
+material = SubResource("StandardMaterial3D_8fpin")
 radius = 0.2
 height = 0.4
 
@@ -224,5 +227,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.042573273, 0)
 light_color = Color(0, 0, 1, 1)
 light_size = 1.0
 
+[node name="attackCooldown" type="Timer" parent="." unique_id=898551315]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
