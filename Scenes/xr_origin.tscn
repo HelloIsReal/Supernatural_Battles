@@ -170,7 +170,7 @@ ground_control = 2
 enabled = false
 
 [node name="playerHitbox" type="Area3D" parent="." unique_id=183730614 groups=["player"]]
-collision_layer = 524288
+collision_layer = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="playerHitbox" unique_id=1416333302 groups=["player"]]
 shape = SubResource("CapsuleShape3D_u2me7")
