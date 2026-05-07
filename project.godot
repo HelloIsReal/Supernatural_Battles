@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 playerAttack="Anything in this group damages the enemy"
 floor=""
 player=""
+testTargetGroup=""
 
 [layer_names]
 

@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = get_tree().get_first_node_in_group("testTargetGroup")
 var homingBullet=true
 var projectileSpeed=5
 
