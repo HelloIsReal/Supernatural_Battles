@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Supernatural Battles"
-run/main_scene="uid://b5lbbny2tprw"
+run/main_scene="uid://yt3upetbi7cl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

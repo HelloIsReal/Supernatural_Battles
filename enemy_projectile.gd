@@ -3,13 +3,25 @@ extends Node3D
 @onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
 var projectileSpeed=15
-var bodySize = 0.1 # offsets the orbs to hit the player body and not feet.
+var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
+var projectileColor: Color = "RED"
+
+func _ready() -> void:
+	$MeshInstance3D.mesh.material.albedo_color = projectileColor
+	if projectileColor == Color.RED:
+		pass
+	if projectileColor == Color.BLUE:
+		pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(homingBullet):
-		position -= global_position.direction_to(Vector3(player.global_position.x, player.global_position.y, player.global_position.z)) * projectileSpeed * delta
-		#position = position.lerp(player.position, 1 * delta)
+		#$enemyProjectile.look_at(player)
+		#position.x += 1
+		#rotation.y = lerp_angle( rotation.y, atan2( player.position.x, player.position.z ), 1 )
+		position -= global_position.direction_to(Vector3(player.position.x, player.position.y + bodySize, player.position.z)) * projectileSpeed * delta
+		#position = position.lerp(player.position, projectileSpeed * delta)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	print(area)

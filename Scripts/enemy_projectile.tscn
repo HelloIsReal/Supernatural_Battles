@@ -12,12 +12,13 @@ height = 0.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r6uwg"]
 margin = 0.01
-radius = 0.3
+radius = 0.46506876
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qssmw"]
-radius = 1.0
+radius = 0.31948277
 
 [node name="enemyProjectile" type="RigidBody3D" unique_id=1980233174]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
 script = ExtResource("1_r6uwg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1135378019]
