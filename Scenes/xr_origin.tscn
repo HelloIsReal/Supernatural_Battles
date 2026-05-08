@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cc5hlux5rahti" path="res://Scenes/hand_particles.tscn" id="5_u2me7"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_yyaeh"]
 [ext_resource type="Script" uid="uid://ctkq2bur6p8kw" path="res://Scripts/controllerDefaults.gd" id="7_2texp"]
+[ext_resource type="PackedScene" uid="uid://1i5oerhampqy" path="res://Scenes/health_bar.tscn" id="8_ks4sd"]
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_g3ggb"]
 [ext_resource type="Texture2D" uid="uid://1byadqvd8mju" path="res://cursedEnergyStock.png" id="10_qrigr"]
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_1cx2o"]
@@ -43,6 +44,9 @@ material = SubResource("StandardMaterial3D_r1pme")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_r1pme"]
 viewport_path = NodePath("LeftHand/LeftHand/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ks4sd"]
+viewport_path = NodePath("LeftHand/LeftHand/SubViewport2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1pme"]
 size = Vector3(0.095329285, 0.16381836, 0.20827866)
@@ -94,10 +98,22 @@ size_2d_override = Vector2i(512, 512)
 
 [node name="CursedBarProgress" parent="LeftHand/LeftHand/SubViewport" unique_id=1388575396 instance=ExtResource("5_r1pme")]
 
-[node name="Sprite3D" type="Sprite3D" parent="LeftHand/LeftHand" unique_id=1687763744]
-transform = Transform3D(-0.04, -3.496911e-09, 0, 3.496911e-09, -0.04, 0, 0, 0, 0.04, -0.03864841, 0.002093818, 0.019975469)
+[node name="SubViewport2" type="SubViewport" parent="LeftHand/LeftHand" unique_id=1888255158]
+transparent_bg = true
+size_2d_override = Vector2i(512, 512)
+
+[node name="healthBar" parent="LeftHand/LeftHand/SubViewport2" unique_id=1476478597 instance=ExtResource("8_ks4sd")]
+
+[node name="cursedBar" type="Sprite3D" parent="LeftHand/LeftHand" unique_id=1687763744]
+transform = Transform3D(-0.04, -3.496911e-09, 0, 3.496911e-09, -0.04, 0, 0, 0, 0.04, -0.03864841, -0.0059900153, 0.019975469)
 axis = 0
 texture = SubResource("ViewportTexture_r1pme")
+
+[node name="healthBar" type="Sprite3D" parent="LeftHand/LeftHand" unique_id=207670700]
+transform = Transform3D(0.04, 6.9938215e-09, 0, -6.9938215e-09, 0.04, 0, 0, 0, 0.04, -0.037102476, 0.010168856, 0.020774487)
+flip_v = true
+axis = 0
+texture = SubResource("ViewportTexture_ks4sd")
 
 [node name="MovementDirect" parent="LeftHand" unique_id=732449142 instance=ExtResource("2_v0u4l")]
 strafe = true

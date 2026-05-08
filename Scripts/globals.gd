@@ -9,3 +9,4 @@ var swordDamage=1
 var cursedEnergyMax = 100
 var cursedEnergyAmount = cursedEnergyMax
 var cursedEnergyInUse=false
+var playerHealth=20

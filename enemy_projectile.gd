@@ -8,7 +8,7 @@ var bodySize = 0.1 # offsets the orbs to hit the player body and not feet.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(homingBullet):
-		position -= global_position.direction_to(Vector3(player.global_position.x, player.global_position.y, player.global_position.z)).normalized() * projectileSpeed * delta
+		position -= global_position.direction_to(Vector3(player.global_position.x, player.global_position.y, player.global_position.z)) * projectileSpeed * delta
 		#position = position.lerp(player.position, 1 * delta)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

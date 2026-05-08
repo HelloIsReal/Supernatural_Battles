@@ -39,7 +39,5 @@ func laserShot():
 
 func _on_attack_cooldown_timeout() -> void:
 	var projectile = bulletProjectile.instantiate()
-	#projectile.homing = true
-	
 	add_child(projectile)
-	projectile.global_position = $".".global_position
+	projectile.global_position = $model/rightHand.global_position
