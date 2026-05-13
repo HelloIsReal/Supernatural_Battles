@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
-var projectileSpeed=15
+var projectileSpeed=5
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
 @onready var target_position = player.global_position
@@ -34,9 +34,9 @@ func _process(delta: float) -> void:
 		#position -= global_position.direction_to(Vector3(player.position.x, player.position.y + bodySize, player.position.z)) * projectileSpeed * delta
 		#position = position.lerp(player.position, projectileSpeed * delta)
 	else:
-		if !targetSet:
-			targetSet=true
-			look_at(target_position, Vector3.UP)
+		#if !targetSet:
+			#targetSet=true
+			#look_at(target_position, Vector3.UP)
 		global_translate(-global_transform.basis.z * projectileSpeed * delta)
 		pass
 

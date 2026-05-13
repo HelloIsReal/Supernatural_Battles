@@ -171,7 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029312134, -0.0056762695, 
 shape = SubResource("BoxShape3D_etiev")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1093701280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0847266, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.0847266, 0)
 text = "10/10HP"
 
 [node name="hitbox" type="Area3D" parent="." unique_id=724089497]
@@ -186,15 +186,15 @@ shape = SubResource("BoxShape3D_vqdfm")
 mesh = SubResource("CapsuleMesh_fmmnk")
 
 [node name="rightHand" type="MeshInstance3D" parent="model" unique_id=73649130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 mesh = SubResource("SphereMesh_gyv2n")
 
 [node name="leftHand" type="MeshInstance3D" parent="model" unique_id=14315426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
 mesh = SubResource("SphereMesh_ckjwh")
 
 [node name="Label3D2" type="Label3D" parent="." unique_id=710939821]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.531, 0.51)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.531, -0.54315066)
 text = ">:("
 font_size = 64
 

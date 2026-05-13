@@ -2,29 +2,33 @@ extends "res://Scenes/enemy.gd"
 
 const laserAttackLength = 3
 @onready var bulletProjectile = preload("res://Scripts/enemy_projectile.tscn")
+@onready var player = get_tree().get_first_node_in_group("player")
+
 
 
 func _ready() -> void:
 	super() # allows the extended script to finish initializing first
-	$firstAttackVoice.play()
-	await $firstAttackVoice.finished
+	
 	energySpinShow()
 	await get_tree().create_timer(2).timeout
+	$firstAttackVoice.play()
+	#await $firstAttackVoice.finished
 	energySpinHide()
 	await get_tree().create_timer(1).timeout
 	laserShotStart()
-	attack(true)
-	await get_tree().create_timer(0.2).timeout
-	attack(true)
-	await get_tree().create_timer(0.2).timeout
-	attack(true)
-	await get_tree().create_timer(0.2).timeout
-	attack(true)
+	attack(false,0.2)
+	attack(false,0.4)
+	attack(false,0.6)
+	attack(false,0.8)
 	await get_tree().create_timer(1).timeout
 	laserShotStop()
 	
-func attack(homing: bool):
+func attack(homing: bool, attackDelay):
+	await get_tree().create_timer(attackDelay).timeout
 	var projectile = bulletProjectile.instantiate()
+	
+	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
+	#player.global_po
 	if(homing):
 		projectile.projectileColor = Color.BLUE
 		add_child(projectile)
@@ -35,8 +39,11 @@ func attack(homing: bool):
 		add_child(projectile)
 		projectile.global_position = $model/rightHand.global_position
 		projectile.homingBullet=false
-		
-		
+	projectile.global_transform.basis.z = global_transform.basis.z
+
+func _physics_process(delta):
+	look_at(player.global_position)
+	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 
 
 func energySpinShow():
@@ -63,17 +70,17 @@ func laserShotStop():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
 
-func _on_attack_cooldown_timeout() -> void:
-	var projectile = bulletProjectile.instantiate()
-	projectile.projectileColor = Color.BLUE
-	add_child(projectile)
-	projectile.homingBullet=true
-	
-	projectile.global_position = $model/rightHand.global_position
-	await get_tree().create_timer(0.5).timeout
-	projectile = bulletProjectile.instantiate()
-	projectile.projectileColor = Color.RED
-	add_child(projectile)
-	projectile.homingBullet=false
-	
-	projectile.global_position = $model/rightHand.global_position
+#func _on_attack_cooldown_timeout() -> void:
+	#var projectile = bulletProjectile.instantiate()
+	#projectile.projectileColor = Color.BLUE
+	#add_child(projectile)
+	#projectile.homingBullet=true
+	#
+	#projectile.global_position = $model/rightHand.global_position
+	#await get_tree().create_timer(0.5).timeout
+	#projectile = bulletProjectile.instantiate()
+	#projectile.projectileColor = Color.RED
+	#add_child(projectile)
+	#projectile.homingBullet=false
+	#
+	#projectile.global_position = $model/rightHand.global_position
