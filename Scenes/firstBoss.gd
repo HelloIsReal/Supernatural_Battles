@@ -39,12 +39,15 @@ func laserShot():
 
 func _on_attack_cooldown_timeout() -> void:
 	var projectile = bulletProjectile.instantiate()
-	add_child(projectile)
 	projectile.projectileColor = Color.BLUE
+	add_child(projectile)
+	projectile.homingBullet=true
+	
 	projectile.global_position = $model/rightHand.global_position
 	await get_tree().create_timer(0.5).timeout
 	
 	projectile = bulletProjectile.instantiate()
 	add_child(projectile)
+	projectile.homingBullet=false
 	projectile.projectileColor = Color.RED
 	projectile.global_position = $model/rightHand.global_position

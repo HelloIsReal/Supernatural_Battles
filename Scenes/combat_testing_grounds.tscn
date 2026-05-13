@@ -52,7 +52,7 @@ mesh = SubResource("BoxMesh_7u7ce")
 environment = SubResource("Environment_i2ifq")
 
 [node name="Table" type="MeshInstance3D" parent="." unique_id=1486535462]
-transform = Transform3D(1.6002152, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3572693, -2.6603355)
+transform = Transform3D(-6.9947625e-08, 0, -1, 0, 1, 0, 1.6002152, 0, -4.371139e-08, 2.7579205, 0.3572693, 0.5764358)
 mesh = SubResource("BoxMesh_i2ifq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Table" unique_id=2091884608]
@@ -61,10 +61,10 @@ mesh = SubResource("BoxMesh_i2ifq")
 shape = SubResource("BoxShape3D_c04c2")
 
 [node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("2_o8f4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3284432, -2.6454341)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.743019, 1.3284432, 0.5764358)
 
 [node name="PickableObject" parent="." unique_id=1316423025 instance=ExtResource("4_i2ifq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.718276, 1.019275, -2.6831987)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.7807837, 1.019275, -0.14184022)
 
 [node name="enemy" parent="." unique_id=593049408 instance=ExtResource("4_c04c2")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.6523907, 7.326217)
@@ -74,3 +74,4 @@ transform = Transform3D(-1, 0, 8.742278e-08, 5.013489e-08, 0.81922215, 0.5734763
 current = true
 
 [node name="Player" parent="." unique_id=503226863 instance=ExtResource("1_qkb8l")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2.5029209, -1)

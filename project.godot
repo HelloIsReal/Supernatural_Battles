@@ -14,6 +14,7 @@ config/name="Supernatural Battles"
 run/main_scene="uid://yt3upetbi7cl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+run/main_scene.mobile="uid://yt3upetbi7cl"
 
 [autoload]
 
@@ -69,4 +70,5 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 openxr/enabled=true
 openxr/default_action_map="uid://b1hc0a71su2wr"
+openxr/reference_space=2
 shaders/enabled=true
