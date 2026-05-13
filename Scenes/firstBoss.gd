@@ -6,12 +6,37 @@ const laserAttackLength = 3
 
 func _ready() -> void:
 	super() # allows the extended script to finish initializing first
-	print("firstBoss script extended ok!")	
+	$firstAttackVoice.play()
+	await $firstAttackVoice.finished
 	energySpinShow()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	energySpinHide()
 	await get_tree().create_timer(1).timeout
-	laserShot()
+	laserShotStart()
+	attack(true)
+	await get_tree().create_timer(0.2).timeout
+	attack(true)
+	await get_tree().create_timer(0.2).timeout
+	attack(true)
+	await get_tree().create_timer(0.2).timeout
+	attack(true)
+	await get_tree().create_timer(1).timeout
+	laserShotStop()
+	
+func attack(homing: bool):
+	var projectile = bulletProjectile.instantiate()
+	if(homing):
+		projectile.projectileColor = Color.BLUE
+		add_child(projectile)
+		projectile.global_position = $model/rightHand.global_position
+		projectile.homingBullet=true
+	else:
+		projectile.projectileColor = Color.RED
+		add_child(projectile)
+		projectile.global_position = $model/rightHand.global_position
+		projectile.homingBullet=false
+		
+		
 
 
 func energySpinShow():
@@ -30,11 +55,12 @@ func hitReset():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.2)
 	
-func laserShot():
+func laserShotStart():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
-	await get_tree().create_timer(laserAttackLength).timeout
-	tween = get_tree().create_tween()
+	#await get_tree().create_timer(laserAttackLength).timeout
+func laserShotStop():
+	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
 
 func _on_attack_cooldown_timeout() -> void:
@@ -45,9 +71,9 @@ func _on_attack_cooldown_timeout() -> void:
 	
 	projectile.global_position = $model/rightHand.global_position
 	await get_tree().create_timer(0.5).timeout
-	
 	projectile = bulletProjectile.instantiate()
+	projectile.projectileColor = Color.RED
 	add_child(projectile)
 	projectile.homingBullet=false
-	projectile.projectileColor = Color.RED
+	
 	projectile.global_position = $model/rightHand.global_position
