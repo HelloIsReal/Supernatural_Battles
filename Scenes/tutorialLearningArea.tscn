@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5lbbny2tprw"]
 
 [ext_resource type="Script" uid="uid://8t2hi6onuxtk" path="res://Scripts/tutorialMain.gd" id="1_vhp3c"]
+[ext_resource type="Texture2D" uid="uid://b4av7ev1elspk" path="res://sky_42_2k.png" id="2_dwmg1"]
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="3_t0sxt"]
 [ext_resource type="PackedScene" uid="uid://dcnba8u2qp7h1" path="res://Scenes/rock_climb_object.tscn" id="4_r8bqt"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_qbi1s"]
@@ -8,13 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://b1xiv0kmvr0g0" path="res://Scenes/sword.tscn" id="7_eyfwf"]
 [ext_resource type="PackedScene" uid="uid://uejbqgsbuhk2" path="res://Scenes/speakersPickable.tscn" id="8_6eadw"]
 [ext_resource type="PackedScene" uid="uid://bxooylom0hsdb" path="res://Scenes/cube.tscn" id="9_c35cr"]
+[ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_vhp3c"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0sxt"]
+panorama = ExtResource("2_dwmg1")
 
 [sub_resource type="Sky" id="Sky_2pdc7"]
-sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+sky_material = SubResource("PanoramaSkyMaterial_t0sxt")
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 2
@@ -291,3 +292,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0849167, 0.9778367, 0.72981
 
 [node name="cube3" parent="." unique_id=1183396809 instance=ExtResource("9_c35cr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.164703, 1.1335979, 0.72981894)
+
+[node name="Camera3D" parent="." unique_id=1595908686 instance=ExtResource("9_vhp3c")]
+current = true

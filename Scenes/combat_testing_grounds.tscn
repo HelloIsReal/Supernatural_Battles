@@ -26,6 +26,10 @@ sky_material = SubResource("ProceduralSkyMaterial_7u7ce")
 background_mode = 2
 sky = SubResource("Sky_h2yge")
 tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 4.0
+ssao_intensity = 10.0
+fog_light_color = Color(0.09983512, 0.12163707, 0.17773375, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)

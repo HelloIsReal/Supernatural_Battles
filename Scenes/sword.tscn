@@ -27,6 +27,8 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gx3d"]
 albedo_color = Color(0.70796657, 0.7079665, 0.7079665, 1)
+metallic = 1.0
+roughness = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e4ynd"]
 material = SubResource("StandardMaterial3D_4gx3d")
@@ -218,5 +220,5 @@ stream = ExtResource("13_pxruu")
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]
 [connection signal="released" from="." to="." method="_on_released"]
-[connection signal="timeout" from="tickTime" to="." method="_on_trail_lifetime_timeout"]
 [connection signal="timeout" from="tickTime" to="." method="_on_tick_time_timeout"]
+[connection signal="timeout" from="tickTime" to="." method="_on_trail_lifetime_timeout"]

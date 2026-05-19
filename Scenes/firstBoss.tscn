@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i26p7pvcf322" path="res://Scenes/firstBoss.gd" id="1_fmmnk"]
 [ext_resource type="AudioStream" uid="uid://ubwwujb60mly" path="res://voices/watashi first attack desu.wav" id="2_l2ouv"]
+[ext_resource type="Material" uid="uid://dp6glv31muedr" path="res://Toon Material.tres" id="2_s7hp4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_etiev"]
 size = Vector3(1.0167599, 1.9441986, 0.84690857)
@@ -143,7 +144,7 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ab6w"]
 transparency = 1
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(1, 0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ajevy"]
 material = SubResource("StandardMaterial3D_5ab6w")
@@ -152,7 +153,7 @@ height = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veu6x"]
 transparency = 1
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0, 0, 1, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_owon5"]
 material = SubResource("StandardMaterial3D_veu6x")
@@ -183,14 +184,17 @@ shape = SubResource("BoxShape3D_vqdfm")
 [node name="model" type="Node3D" parent="." unique_id=1985393849]
 
 [node name="body" type="MeshInstance3D" parent="model" unique_id=21792402]
+material_override = ExtResource("2_s7hp4")
 mesh = SubResource("CapsuleMesh_fmmnk")
 
 [node name="rightHand" type="MeshInstance3D" parent="model" unique_id=73649130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+material_override = ExtResource("2_s7hp4")
 mesh = SubResource("SphereMesh_gyv2n")
 
 [node name="leftHand" type="MeshInstance3D" parent="model" unique_id=14315426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+material_override = ExtResource("2_s7hp4")
 mesh = SubResource("SphereMesh_ckjwh")
 
 [node name="Label3D2" type="Label3D" parent="." unique_id=710939821]
