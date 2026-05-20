@@ -18,6 +18,27 @@
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_g3ggb"]
 [ext_resource type="Texture2D" uid="uid://1byadqvd8mju" path="res://cursedEnergyStock.png" id="10_qrigr"]
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_1cx2o"]
+[ext_resource type="PackedScene" uid="uid://gy4et5smlkd0" path="res://grassMover.tscn" id="19_kch45"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ouv"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks4sd"]
+next_pass = SubResource("StandardMaterial3D_l2ouv")
+diffuse_mode = 3
+specular_mode = 1
+roughness = 0.0
+stencil_mode = 1
+stencil_flags = 2
 
 [sub_resource type="Curve" id="Curve_qrigr"]
 _data = [Vector2(0, 0), 0.0, 0.5345105, 0, 1, Vector2(0.5675676, 0.30337083), 0.0, 0.0, 0, 0, Vector2(0.75, 0), -0.85665643, 0.0, 0, 0]
@@ -51,6 +72,14 @@ viewport_path = NodePath("LeftHand/LeftHand/SubViewport2")
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1pme"]
 size = Vector3(0.095329285, 0.16381836, 0.20827866)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kch45"]
+next_pass = SubResource("StandardMaterial3D_l2ouv")
+diffuse_mode = 3
+specular_mode = 1
+roughness = 0.0
+stencil_mode = 1
+stencil_flags = 2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2texp"]
 size = Vector3(0.095329285, 0.16381836, 0.20827866)
 
@@ -78,6 +107,7 @@ script = ExtResource("7_2texp")
 handParticles = NodePath("LeftHand/handParticles")
 
 [node name="LeftHand" parent="LeftHand" unique_id=980555113 instance=ExtResource("1_jw5w6")]
+hand_material_override = SubResource("StandardMaterial3D_ks4sd")
 
 [node name="handParticles" parent="LeftHand/LeftHand" unique_id=1854443140 instance=ExtResource("5_u2me7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011940209, 0, 0.018163007)
@@ -140,6 +170,7 @@ script = ExtResource("7_2texp")
 handParticles = NodePath("RightHand/handParticles")
 
 [node name="RightHand" parent="RightHand" unique_id=1273797599 instance=ExtResource("2_rturn")]
+hand_material_override = SubResource("StandardMaterial3D_kch45")
 
 [node name="handParticles" parent="RightHand/RightHand" unique_id=1824967115 instance=ExtResource("5_u2me7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.05)
@@ -190,6 +221,9 @@ collision_layer = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="playerHitbox" unique_id=1416333302 groups=["player"]]
 shape = SubResource("CapsuleShape3D_u2me7")
+
+[node name="grassMover" parent="." unique_id=2112642318 instance=ExtResource("19_kch45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 
 [connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="playerMainController" method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="has_dropped" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_dropped"]

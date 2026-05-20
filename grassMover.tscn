@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gy4et5smlkd0"]
+
+[ext_resource type="Script" uid="uid://d08xrbsk130dy" path="res://grassMover.gd" id="1_vvnhi"]
+
+[node name="Node3D" type="Node3D" unique_id=2112642318]
+script = ExtResource("1_vvnhi")
