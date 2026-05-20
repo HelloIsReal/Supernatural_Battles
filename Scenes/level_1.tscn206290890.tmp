@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
 [ext_resource type="ArrayMesh" uid="uid://bboe8duk7ptrb" path="res://straw.obj" id="5_evi0p"]
 [ext_resource type="Texture2D" uid="uid://dv4fi4gvshhem" path="res://kloofendal_43d_clear_puresky_4k.exr" id="5_wrinw"]
+[ext_resource type="Script" uid="uid://bqdmwm4efmbxo" path="res://Scenes/grass.gd" id="8_af3po"]
 [ext_resource type="PackedScene" uid="uid://b1xiv0kmvr0g0" path="res://Scenes/sword.tscn" id="8_chwpn"]
 [ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_wrinw"]
 
@@ -115,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.77861935, 0, 2.5238967, 0.0171
 mesh = SubResource("BoxMesh_chwpn")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=852214732]
-transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0, 1.7000341, 2.6652193)
+transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0, 1.7000341, 0.8656573)
 texture = ExtResource("2_8ffim")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2002830930]
@@ -129,6 +130,7 @@ environment = SubResource("Environment_6444e")
 material_override = SubResource("ShaderMaterial_lsmp6")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_uy8f0")
+script = ExtResource("8_af3po")
 
 [node name="Sword" parent="Grass" unique_id=1973335216 instance=ExtResource("8_chwpn")]
 transform = Transform3D(4.3711392e-08, 0.014241365, -0.9998986, -3.821371e-15, -0.9998986, -0.014241365, -1, 6.2251365e-10, -4.3706958e-08, 0, 0.6077642, -1.3704579)
