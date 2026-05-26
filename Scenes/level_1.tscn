@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c524w6di38tng"]
 
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_vk57k"]
-[ext_resource type="Script" uid="uid://cjh84apl2eey6" path="res://Scenes/level_1.gd" id="1_xrdnt"]
+[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://cvusfg5qbu2hh" path="res://mirrorPlaceholder.png" id="2_8ffim"]
 [ext_resource type="Script" uid="uid://400u8hdtgta8" path="res://Scenes/elevator.gd" id="2_xfk5q"]
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
@@ -140,3 +140,6 @@ mesh = SubResource("PlaneMesh_evi0p")
 [node name="Camera3D2" parent="." unique_id=1595908686 instance=ExtResource("9_wrinw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9274702, 0)
 current = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1477550361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6138868, 1.6619321)
