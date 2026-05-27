@@ -124,6 +124,7 @@ shape = SubResource("BoxShape3D_83fnj")
 
 [node name="swordParticles" parent="." index="1" unique_id=1854443140 instance=ExtResource("14_swbve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08650651, 0)
+visible = false
 particleSpeed = 2
 
 [node name="handle" type="MeshInstance3D" parent="." index="2" unique_id=1165753940]

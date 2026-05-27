@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c524w6di38tng"]
 
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_vk57k"]
-[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_xrdnt"]
+[ext_resource type="Script" uid="uid://cjh84apl2eey6" path="res://Scenes/level_1.gd" id="1_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://cvusfg5qbu2hh" path="res://mirrorPlaceholder.png" id="2_8ffim"]
 [ext_resource type="Script" uid="uid://400u8hdtgta8" path="res://Scenes/elevator.gd" id="2_xfk5q"]
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dv4fi4gvshhem" path="res://kloofendal_43d_clear_puresky_4k.exr" id="5_wrinw"]
 [ext_resource type="PackedScene" uid="uid://b1xiv0kmvr0g0" path="res://Scenes/sword.tscn" id="8_chwpn"]
 [ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_wrinw"]
+[ext_resource type="AudioStream" uid="uid://t4d7qykpdj51" path="res://Elevator_Ding-Nicholas_Judy.wav" id="10_af3po"]
+[ext_resource type="PackedScene" uid="uid://cf3k15qt563so" path="res://Scenes/firstBoss.tscn" id="11_uy8f0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xfk5q"]
 size = Vector3(2, 0.1, 2)
@@ -16,13 +18,25 @@ size = Vector3(2, 0.1, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_7p6j4"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy8f0"]
+size = Vector3(2, 0.1, 2)
+
 [sub_resource type="BoxMesh" id="BoxMesh_6444e"]
+size = Vector3(0.1, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6r07y"]
 size = Vector3(0.1, 3, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_evi0p"]
 size = Vector3(0.1, 3, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ioyp"]
+size = Vector3(0.1, 3, 2)
+
 [sub_resource type="BoxMesh" id="BoxMesh_lsmp6"]
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oovug"]
 size = Vector3(2, 3, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrdnt"]
@@ -37,6 +51,9 @@ backlight_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_chwpn"]
 material = SubResource("StandardMaterial3D_xfk5q")
 size = Vector3(1, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_af3po"]
+size = Vector3(2, 0.3, 2)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_af3po"]
 panorama = ExtResource("5_wrinw")
@@ -54,8 +71,8 @@ sky = SubResource("Sky_7p6j4")
 render_priority = 0
 shader = ExtResource("4_6444e")
 shader_parameter/player_pos = Vector3(0, -0.17079788, 2.048582)
-shader_parameter/radius = 1.0
-shader_parameter/power = 0.7
+shader_parameter/radius = 1.5
+shader_parameter/power = 1.0
 shader_parameter/albedo = Color(0, 1, 0, 1)
 
 [sub_resource type="MultiMesh" id="MultiMesh_uy8f0"]
@@ -71,13 +88,16 @@ albedo_color = Color(0, 0.7176471, 0, 1)
 material = SubResource("StandardMaterial3D_6r07y")
 size = Vector2(30, 30)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8yhm2"]
+size = Vector3(30, 0.5, 30)
+
 [node name="level1" type="Node3D" unique_id=1784115397]
 script = ExtResource("1_xrdnt")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_vk57k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5292021, 2.048582)
 
-[node name="elevator" type="Node3D" parent="." unique_id=1739483795]
+[node name="elevator" type="StaticBody3D" parent="." unique_id=1496027745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7388389)
 script = ExtResource("2_xfk5q")
 
@@ -88,17 +108,29 @@ mesh = SubResource("BoxMesh_xfk5q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7549882, 0)
 mesh = SubResource("BoxMesh_7p6j4")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/MeshInstance3D5" unique_id=359120106]
+shape = SubResource("BoxShape3D_uy8f0")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="elevator" unique_id=669718563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.3332465, 0)
 mesh = SubResource("BoxMesh_6444e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/MeshInstance3D2" unique_id=1241830761]
+shape = SubResource("BoxShape3D_6r07y")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="elevator" unique_id=570449322]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.3332465, 0)
 mesh = SubResource("BoxMesh_evi0p")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/MeshInstance3D3" unique_id=511200769]
+shape = SubResource("BoxShape3D_6ioyp")
+
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="elevator" unique_id=162295692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3332465, 1)
 mesh = SubResource("BoxMesh_lsmp6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/MeshInstance3D4" unique_id=2033854808]
+shape = SubResource("BoxShape3D_oovug")
 
 [node name="door" type="Node3D" parent="elevator" unique_id=2090398062]
 
@@ -113,6 +145,13 @@ mesh = SubResource("BoxMesh_wrinw")
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="elevator" unique_id=373312476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.77861935, 0, 2.5238967, 0.017175674)
 mesh = SubResource("BoxMesh_chwpn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="elevator" unique_id=1477550361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6138868, -0.0769068)
+stream = ExtResource("10_af3po")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator" unique_id=933843723]
+shape = SubResource("BoxShape3D_af3po")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=852214732]
 transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0, 1.7000341, 2.6652193)
@@ -130,16 +169,22 @@ material_override = SubResource("ShaderMaterial_lsmp6")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_uy8f0")
 
-[node name="Sword" parent="Grass" unique_id=1973335216 instance=ExtResource("8_chwpn")]
-transform = Transform3D(4.3711392e-08, 0.014241365, -0.9998986, -3.821371e-15, -0.9998986, -0.014241365, -1, 6.2251365e-10, -4.3706958e-08, 0, 0.6077642, -1.3704579)
-
 [node name="grassFloor" type="MeshInstance3D" parent="." unique_id=112077309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.85136)
 mesh = SubResource("PlaneMesh_evi0p")
+
+[node name="grassCollision" type="StaticBody3D" parent="." unique_id=1909146891]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grassCollision" unique_id=130979206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22924376, -13.85136)
+shape = SubResource("BoxShape3D_8yhm2")
 
 [node name="Camera3D2" parent="." unique_id=1595908686 instance=ExtResource("9_wrinw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9274702, 0)
 current = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1477550361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6138868, 1.6619321)
+[node name="firstBoss" parent="." unique_id=593049408 instance=ExtResource("11_uy8f0")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.1623526, -24.7064)
+
+[node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("8_chwpn")]
+transform = Transform3D(4.3711392e-08, 0.014241365, -0.9998986, -3.821371e-15, -0.9998986, -0.014241365, -1, 6.2251365e-10, -4.3706958e-08, 0, 0.64268154, -1.3704579)

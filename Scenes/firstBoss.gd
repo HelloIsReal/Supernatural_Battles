@@ -8,7 +8,7 @@ const laserAttackLength = 3
 
 func _ready() -> void:
 	super() # allows the extended script to finish initializing first
-	
+	await get_tree().create_timer(3).timeout
 	energySpinShow()
 	await get_tree().create_timer(2).timeout
 	$firstAttackVoice.play()

@@ -1,7 +1,10 @@
 extends Node3D
 
+@onready var elevatorSFX = get_node("AudioStreamPlayer3D")
+
 func _ready() -> void:
 	elevatorDoorOpen()
+	elevatorSFX.play()
 
 
 func elevatorDoorOpen():
