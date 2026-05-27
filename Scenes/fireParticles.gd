@@ -7,7 +7,7 @@ func _ready():
 	$fire.emitting = true
 	$sparks.emitting = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $".".visible == true:
 		$fire.emitting = true
 		$sparks.emitting = true

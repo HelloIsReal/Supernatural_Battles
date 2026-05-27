@@ -7,8 +7,11 @@ signal released
 @export var threshold: float = 0.9
 #@export var handParticles: GPUParticles3D
 @export var handParticles: Node3D
+@export var handCanDash=false
+var dashSpeed = 50
 
 var held_object = null
+
 
 @export var is_energy: bool:
 	set(value):
@@ -47,7 +50,11 @@ func _physics_process(_delta):
 		##held_object.controllerInput.emit(self)
 		#held_object.ping()
 		#$FunctionPickup.action_button_action()
-	
+		if(is_button_pressed("by_button") and handCanDash and Globals.playerDash): # If button pressed, and this controller hand is allowed to dash, and player can dash.
+			Globals.playerDash=false
+			$"../playerMainController/dashCooldown".start()
+			$"../PlayerBody".velocity = -$"..".transform.basis.z * dashSpeed
+			print("dash!")
 	
 
 
@@ -57,3 +64,7 @@ func _on_function_pickup_has_picked_up(what):
 
 func _on_function_pickup_has_dropped():
 	held_object = null
+
+
+func _on_dash_cooldown_timeout() -> void:
+	Globals.playerDash=true

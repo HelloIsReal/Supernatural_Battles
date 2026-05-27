@@ -10,3 +10,4 @@ var cursedEnergyMax = 100
 var cursedEnergyAmount = cursedEnergyMax
 var cursedEnergyInUse=false
 var playerHealth=20
+var playerDash=true

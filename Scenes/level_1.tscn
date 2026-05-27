@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_wrinw"]
 [ext_resource type="AudioStream" uid="uid://t4d7qykpdj51" path="res://Elevator_Ding-Nicholas_Judy.wav" id="10_af3po"]
 [ext_resource type="PackedScene" uid="uid://cf3k15qt563so" path="res://Scenes/firstBoss.tscn" id="11_uy8f0"]
+[ext_resource type="PackedScene" uid="uid://byjfsxh7m60a3" path="res://free_pack_-_rocks_stylized.glb" id="12_uy8f0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xfk5q"]
 size = Vector3(2, 0.1, 2)
@@ -95,6 +96,18 @@ buffer = PackedFloat32Array(0.51380724, -0.065341815, 0.56246394, 4.3256416, -0.
 material = SubResource("StandardMaterial3D_af3po")
 size = Vector2(90, 90)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i23i"]
+size = Vector3(0.4312744, 1, 0.1614914)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjppf"]
+size = Vector3(0.4312744, 1, 0.21306992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yltlr"]
+size = Vector3(0.17984009, 1, 0.41033554)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
+size = Vector3(0.17984009, 1, 0.41033554)
+
 [node name="level1" type="Node3D" unique_id=1784115397]
 script = ExtResource("1_xrdnt")
 
@@ -175,9 +188,6 @@ current = true
 [node name="firstBoss" parent="." unique_id=593049408 instance=ExtResource("11_uy8f0")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.1623526, -32.959827)
 
-[node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("8_chwpn")]
-transform = Transform3D(4.3711392e-08, 0.014241365, -0.9998986, -3.821371e-15, -0.9998986, -0.014241365, -1, 6.2251365e-10, -4.3706958e-08, 0, 0.64268154, -1.3704579)
-
 [node name="grassTemplate" type="Node3D" parent="." unique_id=1082902149]
 
 [node name="grassCollision" type="StaticBody3D" parent="grassTemplate" unique_id=1909146891]
@@ -247,3 +257,29 @@ multimesh = SubResource("MultiMesh_af3po")
 [node name="grassBottom" type="MeshInstance3D" parent="." unique_id=1328784418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.85136)
 mesh = SubResource("PlaneMesh_af3po")
+
+[node name="Rock" parent="." unique_id=1534654198 instance=ExtResource("12_uy8f0")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.07501483, -0.043560863, -2.8794763)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rock" unique_id=75081818]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock" unique_id=1413428910]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=1465810681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030944824, 0, 1.3380194)
+shape = SubResource("BoxShape3D_8i23i")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=77244949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030944824, 0, 1.0458903)
+shape = SubResource("BoxShape3D_pjppf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=1897681133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09477234, 0, 1.2135973)
+shape = SubResource("BoxShape3D_yltlr")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=740171478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1632685, 0, 1.2135973)
+shape = SubResource("BoxShape3D_6ssoq")
+
+[node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("8_chwpn")]
+transform = Transform3D(1, 0, 0, 0, -0.99998873, -0.00474714, 0, 0.00474714, -0.99998873, 0.019853517, 0.9472842, -1.0772712)

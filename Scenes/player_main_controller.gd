@@ -4,7 +4,7 @@ func _ready():
 	$cursedEnergyRefillTick.start()
 	Globals.damagePlayer.connect(takeDamage)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if !Globals.cursedEnergyInUse:
 		$cursedEnergyRefillTick.paused = false
 	else:

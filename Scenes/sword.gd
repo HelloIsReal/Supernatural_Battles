@@ -86,5 +86,5 @@ func turnOffFire():
 	print("Fire off")
 
 
-func _on_released(pickable, by):
+func _on_released(_pickable, _by):
 	turnOffFire()

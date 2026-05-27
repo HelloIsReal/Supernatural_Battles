@@ -99,6 +99,8 @@ script = ExtResource("2_potwm")
 [node name="cursedEnergyRefillTick" type="Timer" parent="playerMainController" unique_id=316960603]
 wait_time = 0.1
 
+[node name="dashCooldown" type="Timer" parent="playerMainController" unique_id=1081119082]
+
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1211235657]
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=1928806945 node_paths=PackedStringArray("handParticles")]
@@ -168,6 +170,7 @@ shape = SubResource("BoxShape3D_r1pme")
 tracker = &"right_hand"
 script = ExtResource("7_2texp")
 handParticles = NodePath("RightHand/handParticles")
+handCanDash = true
 
 [node name="RightHand" parent="RightHand" unique_id=1273797599 instance=ExtResource("2_rturn")]
 hand_material_override = SubResource("StandardMaterial3D_kch45")
@@ -226,6 +229,7 @@ shape = SubResource("CapsuleShape3D_u2me7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 
 [connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="playerMainController" method="_on_cursed_energy_refill_tick_timeout"]
+[connection signal="timeout" from="playerMainController/dashCooldown" to="RightHand" method="_on_dash_cooldown_timeout"]
 [connection signal="has_dropped" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_dropped"]
 [connection signal="has_picked_up" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_picked_up"]
 [connection signal="button_pressed" from="RightHand" to="." method="_on_right_hand_button_pressed"]
