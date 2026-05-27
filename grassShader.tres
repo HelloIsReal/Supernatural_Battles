@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://no0ja8gdovy1"]
+
+[ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="1_p0707"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p0707")
+shader_parameter/player_pos = Vector3(0, -0.17079788, 2.048582)
+shader_parameter/radius = 1.5
+shader_parameter/power = 1.0
+shader_parameter/albedo = Color(0, 1, 0, 1)
