@@ -42,7 +42,7 @@ func attack(homing: bool, attackDelay):
 	projectile.global_transform.basis.z = global_transform.basis.z
 
 func _physics_process(_delta):
-	look_at(player.global_position)
+	look_at(player.global_position, Vector3(0,1,0))
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 
 
