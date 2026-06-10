@@ -34,7 +34,8 @@ func _physics_process(delta):
 
 
 func _on_area_3d_body_entered(body):
-	print(body.get_groups())
+	pass
+	#print(body.get_groups())
 
 
 func _on_area_3d_area_entered(area):

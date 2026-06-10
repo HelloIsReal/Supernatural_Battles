@@ -10,37 +10,27 @@ material = SubResource("StandardMaterial3D_qssmw")
 radius = 0.3
 height = 0.6
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_r6uwg"]
-margin = 0.01
-radius = 0.46506876
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_qssmw"]
-radius = 0.31948277
+radius = 0.30694804
 
-[node name="enemyProjectile" type="RigidBody3D" unique_id=1980233174]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+[node name="enemyProjectile" type="Area3D" unique_id=2049946196]
+collision_mask = 524289
 script = ExtResource("1_r6uwg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1135378019]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("SphereMesh_041qo")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=936910965]
 light_color = Color(1, 1, 0, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1302596176]
-shape = SubResource("SphereShape3D_r6uwg")
-disabled = true
-
-[node name="Area3D" type="Area3D" parent="." unique_id=2049946196]
-collision_mask = 524289
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=904546631]
-shape = SubResource("SphereShape3D_qssmw")
 
 [node name="lifetime" type="Timer" parent="." unique_id=1270676723]
 wait_time = 30.0
 one_shot = true
 autostart = true
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=904546631]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("SphereShape3D_qssmw")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

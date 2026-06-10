@@ -4,3 +4,4 @@
 
 [node name="Node3D" type="Node3D" unique_id=2112642318]
 script = ExtResource("1_vvnhi")
+checkForGrass = null

@@ -16,31 +16,37 @@ func _ready() -> void:
 	energySpinHide()
 	await get_tree().create_timer(1).timeout
 	laserShotStart()
-	attack(false,0.2)
-	attack(false,0.4)
-	attack(false,0.6)
-	attack(false,0.8)
+	
 	await get_tree().create_timer(1).timeout
 	laserShotStop()
 	
-func attack(homing: bool, attackDelay):
+func attack(homing: bool,aimAtPlayer: bool, attackDelay,attackType: int):
 	await get_tree().create_timer(attackDelay).timeout
 	var projectile = bulletProjectile.instantiate()
 	
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 	#player.global_po
+	#projectile.add_collision_exception_with(self)
 	get_parent().add_child(projectile)
-	projectile.global_position = $model/rightHand.position
-	if(homing):
-		look_at(player.position, Vector3.UP)
-		projectile.homingBullet=true
+	projectile.global_position = $model/rightHand.global_position
+	if(aimAtPlayer):
+		if(homing):
+			#look_at(player.position, Vector3.UP)
+			
+			projectile.projectileColor = Color.BLUE
+			projectile.homingBullet=true
+		else:
+			projectile.projectileColor = Color.RED
+			#look_at(player.position, Vector3.UP)
+			projectile.homingBullet=false
 	else:
-		look_at(player.position, Vector3.UP)
-		projectile.homingBullet=false
-	
+		if(attackType==1):
+			#insert attack shoots bullets all around the boss.
+			pass
 	#projectile.global_transform.basis.z = global_transform.basis.z
 
 func _physics_process(_delta):
+	pass
 	look_at(player.global_position, Vector3(0,1,0))
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 
@@ -64,7 +70,11 @@ func hitReset():
 func laserShotStart():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
-	#await get_tree().create_timer(laserAttackLength).timeout
+	await tween.finished
+	attack(false,true,0.2,0)
+	attack(false,true,0.4,0)
+	attack(false,true,0.6,0)
+	attack(true,true,0.8,0)
 func laserShotStop():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
