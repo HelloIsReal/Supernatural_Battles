@@ -29,17 +29,16 @@ func attack(homing: bool, attackDelay):
 	
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 	#player.global_po
+	get_parent().add_child(projectile)
+	projectile.global_position = $model/rightHand.position
 	if(homing):
-		projectile.projectileColor = Color.BLUE
-		add_child(projectile)
-		projectile.global_position = $model/rightHand.global_position
+		look_at(player.position, Vector3.UP)
 		projectile.homingBullet=true
 	else:
-		projectile.projectileColor = Color.RED
-		add_child(projectile)
-		projectile.global_position = $model/rightHand.global_position
+		look_at(player.position, Vector3.UP)
 		projectile.homingBullet=false
-	projectile.global_transform.basis.z = global_transform.basis.z
+	
+	#projectile.global_transform.basis.z = global_transform.basis.z
 
 func _physics_process(_delta):
 	look_at(player.global_position, Vector3(0,1,0))
