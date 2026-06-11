@@ -20,7 +20,7 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	laserShotStop()
 	
-func attack(homing: bool,aimAtPlayer: bool, attackDelay,attackType: int):
+func attack(attackType: int, attackDelay):
 	await get_tree().create_timer(attackDelay).timeout
 	var projectile = bulletProjectile.instantiate()
 	
@@ -29,20 +29,16 @@ func attack(homing: bool,aimAtPlayer: bool, attackDelay,attackType: int):
 	#projectile.add_collision_exception_with(self)
 	get_parent().add_child(projectile)
 	projectile.global_position = $model/rightHand.global_position
-	if(aimAtPlayer):
-		if(homing):
-			#look_at(player.position, Vector3.UP)
+	if (attackType==1):
+		projectile.projectileColor = Color.BLUE
+		projectile.attackType=1
+	if (attackType==2):
+		projectile.projectileColor = Color.RED
+		projectile.attackType=2
+	if (attackType==3):
+		#insert attack shoots bullets all around the boss.
+		pass
 			
-			projectile.projectileColor = Color.BLUE
-			projectile.homingBullet=true
-		else:
-			projectile.projectileColor = Color.RED
-			#look_at(player.position, Vector3.UP)
-			projectile.homingBullet=false
-	else:
-		if(attackType==1):
-			#insert attack shoots bullets all around the boss.
-			pass
 	#projectile.global_transform.basis.z = global_transform.basis.z
 
 func _physics_process(_delta):
@@ -71,10 +67,10 @@ func laserShotStart():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
 	await tween.finished
-	attack(false,true,0.2,0)
-	attack(false,true,0.4,0)
-	attack(false,true,0.6,0)
-	attack(true,true,0.8,0)
+	attack(2,0.2)
+	attack(2,0.4)
+	attack(2,0.6)
+	attack(1,0.8)
 func laserShotStop():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
