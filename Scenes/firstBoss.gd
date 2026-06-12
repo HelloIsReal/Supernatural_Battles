@@ -68,9 +68,9 @@ func laserShotStart():
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
 	await tween.finished
 	attack(2,0.2)
-	attack(2,0.4)
-	attack(2,0.6)
-	attack(1,0.8)
+	attack(1,0.4)
+	#attack(2,0.6)
+	#attack(1,0.8)
 func laserShotStop():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)

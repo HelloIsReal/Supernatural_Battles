@@ -1,8 +1,12 @@
 extends Node3D
 
+@onready var swordBlockedPlayer = $swordBlock
+
+
+
 @onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
-var projectileSpeed=10
+var projectileSpeed=15
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
 @onready var target_position = player.global_position
@@ -76,4 +80,14 @@ func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("player"):
 		print("player hit by projectile attackType of ",attackType)
 		Globals.damagePlayer.emit(2)
+		queue_free()
+	if area.is_in_group("playerAttack"):
+		print("blocked by sword!")
+		$CollisionShape3D.disabled = true
+		remove_child(swordBlockedPlayer)
+		get_tree().current_scene.add_child(swordBlockedPlayer)
+		
+		swordBlockedPlayer.play()
+		await swordBlockedPlayer.finished
+		swordBlockedPlayer.queue_free()
 		queue_free()

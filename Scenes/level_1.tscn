@@ -108,8 +108,6 @@ size = Vector3(0.17984009, 1, 0.41033554)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
 size = Vector3(0.17984009, 1, 0.41033554)
 
-[sub_resource type="SphereMesh" id="SphereMesh_uy8f0"]
-
 [node name="level1" type="Node3D" unique_id=1784115397]
 script = ExtResource("1_xrdnt")
 
@@ -285,7 +283,3 @@ shape = SubResource("BoxShape3D_6ssoq")
 
 [node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("8_chwpn")]
 transform = Transform3D(1, 0, 0, 0, -0.99998873, -0.00474714, 0, 0.00474714, -0.99998873, 0.019853517, 0.9472842, -1.0772712)
-
-[node name="testTarget" type="MeshInstance3D" parent="." unique_id=513661406 groups=["testTarget"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.820101, 1.4760032, -4.6748414)
-mesh = SubResource("SphereMesh_uy8f0")
