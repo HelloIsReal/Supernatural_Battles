@@ -21,6 +21,8 @@ run/main_scene.mobile="uid://bo2dpae16s0f2"
 XRToolsUserSettings="*uid://bqgb8i74tm0t"
 XRToolsRumbleManager="*uid://by853dk86g1qw"
 Globals="*uid://itkf7xtioib5"
+AudioPlayer="uid://bnum06gjs2m47"
+AudioPlayerScript="uid://ckfsoxb70fqlq"
 
 [display]
 

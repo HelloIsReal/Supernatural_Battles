@@ -83,11 +83,12 @@ func _on_area_entered(area: Area3D) -> void:
 		queue_free()
 	if area.is_in_group("playerAttack"):
 		print("blocked by sword!")
-		$CollisionShape3D.disabled = true
-		remove_child(swordBlockedPlayer)
-		get_tree().current_scene.add_child(swordBlockedPlayer)
-		
-		swordBlockedPlayer.play()
-		await swordBlockedPlayer.finished
-		swordBlockedPlayer.queue_free()
+		##$CollisionShape3D.disabled = true
+		#remove_child(swordBlockedPlayer)
+		#get_tree().current_scene.add_child(swordBlockedPlayer)
+		#
+		#swordBlockedPlayer.play()
+		#await swordBlockedPlayer.finished
+		#swordBlockedPlayer.queue_free()
+		AudioPlayerScript.swordBlockSFX()
 		queue_free()

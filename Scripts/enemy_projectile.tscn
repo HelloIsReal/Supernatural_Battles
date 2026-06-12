@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cltkgnq8siwry" path="res://enemy_projectile.gd" id="1_r6uwg"]
 [ext_resource type="AudioStream" uid="uid://b776ft4sjx1jt" path="res://652555__raining-0n-satrn__pulsating-hum.wav" id="2_qssmw"]
-[ext_resource type="AudioStream" uid="uid://es8mr1mb3e86" path="res://SwordClash02 by 32cheeseman32.wav" id="3_041qo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qssmw"]
 albedo_color = Color(1, 1, 0, 1)
@@ -39,10 +38,5 @@ shape = SubResource("SphereShape3D_qssmw")
 stream = ExtResource("2_qssmw")
 max_db = 5.0
 autoplay = true
-
-[node name="swordBlock" type="AudioStreamPlayer3D" parent="." unique_id=1168407246]
-stream = ExtResource("3_041qo")
-attenuation_model = 3
-max_db = 5.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
