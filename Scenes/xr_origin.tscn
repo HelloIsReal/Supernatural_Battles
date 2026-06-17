@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://erx5gd5q14a6"]
 
-[ext_resource type="Script" uid="uid://ces1j6plojyra" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="1_2texp"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_jw5w6"]
+[ext_resource type="Script" uid="uid://d2pyeu24i07cy" path="res://Scenes/xr_origin.gd" id="1_kch45"]
 [ext_resource type="Script" uid="uid://dax7qr57vs0ko" path="res://Scenes/player_main_controller.gd" id="2_potwm"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_rturn"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_v0u4l"]
@@ -93,9 +93,14 @@ radius = 0.15185547
 height = 1.5847168
 
 [node name="XROrigin3D" type="XROrigin3D" unique_id=503226863 groups=["player"]]
-script = ExtResource("1_2texp")
+script = ExtResource("1_kch45")
+render_target_size_multiplier = null
+enable_passthrough = null
+physics_rate_multiplier = null
+target_refresh_rate = null
 
 [node name="playerMainController" type="Node3D" parent="." unique_id=125839558]
+visible = false
 script = ExtResource("2_potwm")
 
 [node name="cursedEnergyRefillTick" type="Timer" parent="playerMainController" unique_id=316960603]
@@ -215,12 +220,15 @@ laser_length = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010088444, 0.007446289, -0.028282672)
 shape = SubResource("BoxShape3D_2texp")
 
-[node name="PlayerBody" parent="." unique_id=985924510 instance=ExtResource("4_fnnc4")]
+[node name="PlayerBody" parent="." unique_id=985924510 groups=["player"] instance=ExtResource("4_fnnc4")]
 physics = SubResource("Resource_owk0p")
 ground_control = 2
 
 [node name="MovementFlight" parent="." unique_id=72380258 instance=ExtResource("12_1cx2o")]
 enabled = false
+
+[node name="grassMover" parent="." unique_id=2112642318 instance=ExtResource("19_kch45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 
 [node name="playerHitbox" type="Area3D" parent="." unique_id=183730614 groups=["player"]]
 collision_layer = 524289
@@ -229,10 +237,7 @@ collision_layer = 524289
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07800293, 0)
 shape = SubResource("CapsuleShape3D_u2me7")
 
-[node name="grassMover" parent="." unique_id=2112642318 instance=ExtResource("19_kch45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
-
-[connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="playerMainController" method="_on_cursed_energy_refill_tick_timeout"]
+[connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="." method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="timeout" from="playerMainController/dashCooldown" to="RightHand" method="_on_dash_cooldown_timeout"]
 [connection signal="has_dropped" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_dropped"]
 [connection signal="has_picked_up" from="LeftHand/FunctionPickup" to="LeftHand" method="_on_function_pickup_has_picked_up"]

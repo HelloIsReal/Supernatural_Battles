@@ -9,29 +9,31 @@ extends Node3D
 ## Our fade effect object
 #@export var fade_effect : FadeEffect
 
-
-func _ready():
-	#XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, false)
-	$cursedEnergyRefillTick.start()
-	Globals.damagePlayer.connect(takeDamage)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	#print($"..".position)
-	if !Globals.cursedEnergyInUse:
-		$cursedEnergyRefillTick.paused = false
-	else:
-		$cursedEnergyRefillTick.paused = true
-	Globals.cursedEnergyAmount = clamp(Globals.cursedEnergyAmount, 0, Globals.cursedEnergyMax)
-
-func _on_cursed_energy_refill_tick_timeout():
-	if Globals.cursedEnergyAmount < Globals.cursedEnergyMax:
-		print("refilling!")
-		Globals.cursedEnergyAmount += 1
-
-func takeDamage(damage):
-	Globals.playerHealth -= damage
-	if(Globals.playerHealth<=0):
-		print("player is dead!")
+#
+#func _ready():
+	##$"../playerHitbox".position = $"../XRCamera3D".position
+	##XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, false)
+	#$cursedEnergyRefillTick.start()
+	#Globals.damagePlayer.connect(takeDamage)
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(_delta):
+	#
+	##print($"..".position)
+	#if !Globals.cursedEnergyInUse:
+		#$cursedEnergyRefillTick.paused = false
+	#else:
+		#$cursedEnergyRefillTick.paused = true
+	#Globals.cursedEnergyAmount = clamp(Globals.cursedEnergyAmount, 0, Globals.cursedEnergyMax)
+#
+#func _on_cursed_energy_refill_tick_timeout():
+	#if Globals.cursedEnergyAmount < Globals.cursedEnergyMax:
+		#print("refilling!")
+		#Globals.cursedEnergyAmount += 1
+#
+#func takeDamage(damage):
+	#Globals.playerHealth -= damage
+	#if(Globals.playerHealth<=0):
+		#print("player is dead!")
 
 ################################
 	## Handle movement
