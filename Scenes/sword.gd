@@ -83,8 +83,14 @@ func turnOffFire():
 	$flameSounds.stop()
 	$GPUTrail3D.visible = false
 	$swordParticles.visible = false
-	print("Fire off")
+	print("Firebl off")
 
 
 func _on_released(_pickable, _by):
 	turnOffFire()
+
+
+func _on_hurt_box_area_entered(area: Area3D) -> void:
+	print("sword hit ",area)
+	if area.is_in_group("enemyAttack"):
+		$swordBlock.play()

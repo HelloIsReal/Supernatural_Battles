@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cqa6h3fo67anu" path="res://GPUTrail-main/GPUTrail3D.gd" id="11_pxruu"]
 [ext_resource type="AudioStream" uid="uid://cad1hrmiq61o2" path="res://Scripts/FIRE SOUND EFFECT IN HIGH QUALITY Cut.mp3" id="13_pxruu"]
 [ext_resource type="PackedScene" uid="uid://lshv3cjfa3th" path="res://Scenes/sword_particles.tscn" id="14_swbve"]
+[ext_resource type="AudioStream" uid="uid://es8mr1mb3e86" path="res://SwordClash02 by 32cheeseman32.wav" id="15_8ykx0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83fnj"]
 size = Vector3(0.07524414, 0.45532924, 0.067919925)
@@ -196,17 +197,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0)
 shape = SubResource("BoxShape3D_licwk")
 
 [node name="hurtBox" type="Area3D" parent="." index="12" unique_id=1635850547 groups=["playerAttack"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10920467, 0.0005184253)
 
 [node name="hurtCollision" type="CollisionShape3D" parent="hurtBox" index="0" unique_id=1125344376 groups=["playerAttack"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487943, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48794296, 0)
 shape = SubResource("BoxShape3D_licwk")
 
 [node name="flameSounds" type="AudioStreamPlayer3D" parent="." index="13" unique_id=49723544]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4949116, 0)
 stream = ExtResource("13_pxruu")
 
+[node name="swordBlock" type="AudioStreamPlayer3D" parent="." index="14" unique_id=1797826141]
+stream = ExtResource("15_8ykx0")
+attenuation_model = 3
+max_db = 5.0
+
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]
 [connection signal="released" from="." to="." method="_on_released"]
 [connection signal="timeout" from="tickTime" to="." method="_on_tick_time_timeout"]
 [connection signal="timeout" from="tickTime" to="." method="_on_trail_lifetime_timeout"]
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

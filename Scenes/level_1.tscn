@@ -81,7 +81,7 @@ size = Vector2(30, 30)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lsmp6"]
 render_priority = 0
 shader = ExtResource("4_6444e")
-shader_parameter/player_pos = Vector3(0, 0.81534106, 5.988233)
+shader_parameter/player_pos = Vector3(0, 3.241802, 2.3097239)
 shader_parameter/radius = 1.5
 shader_parameter/power = 1.0
 shader_parameter/albedo = Color(0, 1, 0, 1)
@@ -112,7 +112,7 @@ size = Vector3(0.17984009, 1, 0.41033554)
 script = ExtResource("1_xrdnt")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_vk57k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.515341, 5.988233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.941802, 2.3097239)
 
 [node name="elevator" type="StaticBody3D" parent="." unique_id=1496027745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33042932, 5.988233)

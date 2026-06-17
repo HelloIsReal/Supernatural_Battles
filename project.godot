@@ -43,6 +43,7 @@ playerAttack="Anything in this group damages the enemy"
 floor=""
 player=""
 testTargetGroup=""
+enemyAttack="Anything in this group damages the player"
 
 [layer_names]
 

@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://b776ft4sjx1jt" path="res://652555__raining-0n-satrn__pulsating-hum.wav" id="2_qssmw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qssmw"]
-albedo_color = Color(1, 1, 0, 1)
+albedo_texture_force_srgb = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_041qo"]
 material = SubResource("StandardMaterial3D_qssmw")
@@ -14,7 +14,7 @@ height = 0.6
 [sub_resource type="SphereShape3D" id="SphereShape3D_qssmw"]
 radius = 0.30694804
 
-[node name="enemyProjectile" type="Area3D" unique_id=2049946196]
+[node name="enemyProjectile" type="Area3D" unique_id=2049946196 groups=["enemyAttack"]]
 collision_mask = 524289
 script = ExtResource("1_r6uwg")
 
@@ -30,7 +30,7 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=904546631]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=904546631 groups=["enemyAttack"]]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 shape = SubResource("SphereShape3D_qssmw")
 
@@ -39,4 +39,8 @@ stream = ExtResource("2_qssmw")
 max_db = 5.0
 autoplay = true
 
+[node name="aimAtPlayer" type="Timer" parent="." unique_id=1830523137]
+wait_time = 0.2
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="aimAtPlayer" to="." method="_on_aim_at_player_timeout"]

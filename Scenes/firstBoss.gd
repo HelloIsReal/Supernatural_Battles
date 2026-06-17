@@ -17,8 +17,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	laserShotStart()
 	
-	await get_tree().create_timer(1).timeout
-	laserShotStop()
+	#await get_tree().create_timer(1).timeout
+	#laserShotStop()
 	
 func attack(attackType: int, attackDelay):
 	await get_tree().create_timer(attackDelay).timeout
@@ -69,6 +69,13 @@ func laserShotStart():
 	await tween.finished
 	attack(2,0.2)
 	attack(1,0.4)
+	await get_tree().create_timer(3).timeout
+	attack(1,1)
+	attack(1,1.4)
+	attack(1,1.8)
+	attack(1,2.2)
+	laserShotStop()
+	
 	#attack(2,0.6)
 	#attack(1,0.8)
 func laserShotStop():

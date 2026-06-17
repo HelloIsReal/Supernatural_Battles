@@ -14,7 +14,7 @@ var targetSet=false
 var attackType=0
 
 func _ready() -> void:
-	$MeshInstance3D.mesh.material.albedo_color = projectileColor
+	#$MeshInstance3D.mesh.material.albedo_color = projectileColor
 	#if projectileColor == Color.RED:
 		#print("red!")
 		#$MeshInstance3D.mesh.material.albedo_color = projectileColor
@@ -22,9 +22,15 @@ func _ready() -> void:
 		#print("blue!")
 		#$MeshInstance3D.mesh.material.albedo_color = projectileColor
 	#target_position = player.global_position
-	if attackType==2: # makes the 2nd projectile type aim at the player once.
-		target_position = player.global_position
-		look_at(target_position, Vector3.UP)
+	#if (attackType==2): # makes the 2nd projectile type aim at the player once.
+		##$aimAtPlayer.start()
+		#target_position = player.global_position
+		#look_at(target_position, Vector3.UP)
+	if attackType==1:
+		$MeshInstance3D.mesh.material.albedo_color = Color.BLUE
+	elif attackType==2:
+		$MeshInstance3D.mesh.material.albedo_color = Color.RED
+		
 		
 
 
@@ -35,7 +41,13 @@ func _process(delta: float) -> void:
 		look_at(target_position, Vector3.UP)
 		global_position -= transform.basis.z * projectileSpeed * delta
 	if (attackType==2): #non-homing bullet aimed at player
-		position += global_transform.basis.z * projectileSpeed * delta
+		#target_position = player.global_position
+		#look_at(target_position, Vector3.UP)
+		if !targetSet:
+			target_position = player.global_position
+			look_at(target_position, Vector3.UP)
+			targetSet=true
+		global_position -= transform.basis.z * projectileSpeed * delta
 	if (attackType==3):
 		pass
 		
@@ -77,6 +89,7 @@ func _on_lifetime_timeout() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	#print(area)
+	print(attackType)
 	if area.is_in_group("player"):
 		print("player hit by projectile attackType of ",attackType)
 		Globals.damagePlayer.emit(2)
@@ -90,5 +103,10 @@ func _on_area_entered(area: Area3D) -> void:
 		#swordBlockedPlayer.play()
 		#await swordBlockedPlayer.finished
 		#swordBlockedPlayer.queue_free()
-		AudioPlayerScript.swordBlockSFX()
+		#AudioPlayerScript.swordBlockSFX()
 		queue_free()
+
+
+#func _on_aim_at_player_timeout() -> void:
+	#target_position = player.global_position
+	#look_at(target_position, Vector3.UP)
