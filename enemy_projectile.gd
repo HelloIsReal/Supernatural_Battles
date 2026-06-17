@@ -89,7 +89,7 @@ func _on_lifetime_timeout() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	#print(area)
-	print(attackType)
+	
 	if area.is_in_group("player"):
 		print("player hit by projectile attackType of ",attackType)
 		Globals.damagePlayer.emit(2)
@@ -110,3 +110,8 @@ func _on_area_entered(area: Area3D) -> void:
 #func _on_aim_at_player_timeout() -> void:
 	#target_position = player.global_position
 	#look_at(target_position, Vector3.UP)
+
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is XRToolsPlayerBody:
+		print("body hit player gonna go!!!!")

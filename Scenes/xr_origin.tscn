@@ -20,6 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_1cx2o"]
 [ext_resource type="PackedScene" uid="uid://gy4et5smlkd0" path="res://grassMover.tscn" id="19_kch45"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u2me7"]
+radius = 0.15185547
+height = 1.5847168
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kch45"]
+radius = 0.152
+height = 1.585
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ouv"]
 render_priority = 1
 transparency = 1
@@ -88,16 +96,8 @@ script = ExtResource("9_g3ggb")
 jump_velocity = 4.0
 metadata/_custom_type_script = "uid://cjfu28jmrajlo"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u2me7"]
-radius = 0.15185547
-height = 1.5847168
-
 [node name="XROrigin3D" type="XROrigin3D" unique_id=503226863 groups=["player"]]
 script = ExtResource("1_kch45")
-render_target_size_multiplier = null
-enable_passthrough = null
-physics_rate_multiplier = null
-target_refresh_rate = null
 
 [node name="playerMainController" type="Node3D" parent="." unique_id=125839558]
 visible = false
@@ -110,6 +110,18 @@ wait_time = 0.1
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1211235657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3516451, -0.0085196495)
+
+[node name="playerHitbox" type="Area3D" parent="XRCamera3D" unique_id=183730614 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3516451, 0.0085196495)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRCamera3D/playerHitbox" unique_id=1416333302 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6375686, 0)
+shape = SubResource("CapsuleShape3D_u2me7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRCamera3D/playerHitbox" unique_id=1621856233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6375686, 0)
+mesh = SubResource("CapsuleMesh_kch45")
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=1928806945 node_paths=PackedStringArray("handParticles")]
 tracker = &"left_hand"
@@ -228,14 +240,7 @@ ground_control = 2
 enabled = false
 
 [node name="grassMover" parent="." unique_id=2112642318 instance=ExtResource("19_kch45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
-
-[node name="playerHitbox" type="Area3D" parent="." unique_id=183730614 groups=["player"]]
-collision_layer = 524289
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="playerHitbox" unique_id=1416333302 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07800293, 0)
-shape = SubResource("CapsuleShape3D_u2me7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14855486, 0)
 
 [connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="." method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="timeout" from="playerMainController/dashCooldown" to="RightHand" method="_on_dash_cooldown_timeout"]

@@ -27,7 +27,7 @@ func attack(attackType: int, attackDelay):
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 	#player.global_po
 	#projectile.add_collision_exception_with(self)
-	get_parent().add_child(projectile)
+	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = $model/rightHand.global_position
 	if (attackType==1):
 		projectile.projectileColor = Color.BLUE

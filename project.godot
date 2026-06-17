@@ -74,7 +74,7 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 openxr/enabled=true
 openxr/default_action_map="uid://b1hc0a71su2wr"
-openxr/reference_space=0
+openxr/reference_space=1
 openxr/foveation_level=3
 openxr/foveation_dynamic=true
 shaders/enabled=true
