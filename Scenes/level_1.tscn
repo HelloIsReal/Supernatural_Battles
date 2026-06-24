@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c524w6di38tng"]
 
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_vk57k"]
-[ext_resource type="Script" uid="uid://cjh84apl2eey6" path="res://Scenes/level_1.gd" id="1_xrdnt"]
+[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://cvusfg5qbu2hh" path="res://mirrorPlaceholder.png" id="2_8ffim"]
 [ext_resource type="Script" uid="uid://400u8hdtgta8" path="res://Scenes/elevator.gd" id="2_xfk5q"]
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
@@ -81,7 +81,7 @@ size = Vector2(30, 30)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lsmp6"]
 render_priority = 0
 shader = ExtResource("4_6444e")
-shader_parameter/player_pos = Vector3(0, 3.241802, 2.3097239)
+shader_parameter/player_pos = Vector3(0.33552635, 2.0750985, 2.3097239)
 shader_parameter/radius = 1.5
 shader_parameter/power = 1.0
 shader_parameter/albedo = Color(0, 1, 0, 1)
@@ -112,7 +112,7 @@ size = Vector3(0.17984009, 1, 0.41033554)
 script = ExtResource("1_xrdnt")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_vk57k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.941802, 2.3097239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33552635, 2.2236533, 2.3097239)
 
 [node name="elevator" type="StaticBody3D" parent="." unique_id=1496027745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33042932, 5.988233)

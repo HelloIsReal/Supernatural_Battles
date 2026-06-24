@@ -9,7 +9,7 @@ var homingBullet=true
 var projectileSpeed=15
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
-@onready var target_position = player.global_position
+@onready var target_position = player.global_position + Vector3(1,0,0)
 var targetSet=false
 var attackType=0
 
