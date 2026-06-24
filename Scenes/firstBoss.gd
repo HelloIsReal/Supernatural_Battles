@@ -4,6 +4,7 @@ const laserAttackLength = 3
 @onready var bulletProjectile = preload("res://Scripts/enemy_projectile.tscn")
 @onready var player = get_tree().get_first_node_in_group("player")
 
+var lookingAtPlayer = true
 
 
 func _ready() -> void:
@@ -42,8 +43,8 @@ func attack(attackType: int, attackDelay):
 	#projectile.global_transform.basis.z = global_transform.basis.z
 
 func _physics_process(_delta):
-	pass
-	look_at(player.global_position, Vector3(0,1,0))
+	if(lookingAtPlayer):
+		look_at(player.global_position, Vector3(0,1,0))
 	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
 
 
@@ -67,6 +68,7 @@ func laserShotStart():
 	var tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
 	await tween.finished
+	lookingAtPlayer=true
 	attack(2,0.2)
 	attack(1,0.4)
 	await get_tree().create_timer(3).timeout
@@ -74,13 +76,20 @@ func laserShotStart():
 	attack(1,1.4)
 	attack(1,1.8)
 	attack(1,2.2)
-	laserShotStop()
+	tween = get_tree().create_tween()
+	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
+	lookingAtPlayer = false
+	await get_tree().create_timer(2).timeout
+	spinAttack()
+
+func spinAttack():
+	lookingAtPlayer = false
+	for i in range(12):
+		attack(2,0.5)
+		rotation.y = i * 30
 	
 	#attack(2,0.6)
 	#attack(1,0.8)
-func laserShotStop():
-	var tween = get_tree().create_tween()
-	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
 
 #func _on_attack_cooldown_timeout() -> void:
 	#var projectile = bulletProjectile.instantiate()

@@ -1,6 +1,8 @@
 @tool
 extends XRToolsStartXR
 
+
+
 func _ready():
 	super()
 	#$"../playerHitbox".position = $"../XRCamera3D".position

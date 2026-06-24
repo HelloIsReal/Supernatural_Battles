@@ -6,11 +6,11 @@ extends Node3D
 
 @onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
-var projectileSpeed=15
+var projectileSpeed=1
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
-@onready var target_position = player.global_position + Vector3(1,0,0)
-var targetSet=false
+@onready var target_position = player.global_position# + Vector3(1,0,0)
+#var targetSet=false
 var attackType=0
 
 func _ready() -> void:
@@ -31,23 +31,22 @@ func _ready() -> void:
 	elif attackType==2:
 		$MeshInstance3D.mesh.material.albedo_color = Color.RED
 		
-		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (attackType==1): #homing bullet
-		target_position = player.global_position + Vector3(0.5,0,0)
+		target_position = player.global_position# + Vector3(0.5,0,0)
 		look_at(target_position, Vector3.UP)
-		global_position -= transform.basis.z * projectileSpeed * delta
-	if (attackType==2): #non-homing bullet aimed at player
+		global_position -= transform.basis.z# * projectileSpeed * delta
+	if (attackType==2): #non-homing bullet.
 		#target_position = player.global_position
 		#look_at(target_position, Vector3.UP)
-		if !targetSet:
-			target_position = player.global_position + Vector3(0.5,0,0)
-			look_at(target_position, Vector3.UP)
-			targetSet=true
-		global_position -= transform.basis.z * projectileSpeed * delta
+		#if !targetSet:
+			#target_position = player.global_position + Vector3(0.5,0,0)
+			#look_at(target_position, Vector3.UP)
+			#targetSet=true
+		global_position -= transform.basis.z# * projectileSpeed * delta
 	if (attackType==3):
 		pass
 		
