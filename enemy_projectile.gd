@@ -37,14 +37,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (attackType==1): #homing bullet
-		target_position = player.global_position
+		target_position = player.global_position + Vector3(0.5,0,0)
 		look_at(target_position, Vector3.UP)
 		global_position -= transform.basis.z * projectileSpeed * delta
 	if (attackType==2): #non-homing bullet aimed at player
 		#target_position = player.global_position
 		#look_at(target_position, Vector3.UP)
 		if !targetSet:
-			target_position = player.global_position
+			target_position = player.global_position + Vector3(0.5,0,0)
 			look_at(target_position, Vector3.UP)
 			targetSet=true
 		global_position -= transform.basis.z * projectileSpeed * delta
