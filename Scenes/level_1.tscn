@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c524w6di38tng"]
 
 [ext_resource type="PackedScene" uid="uid://erx5gd5q14a6" path="res://Scenes/xr_origin.tscn" id="1_vk57k"]
-[ext_resource type="Script" uid="uid://cjh84apl2eey6" path="res://Scenes/level_1.gd" id="1_xrdnt"]
+[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://cvusfg5qbu2hh" path="res://mirrorPlaceholder.png" id="2_8ffim"]
 [ext_resource type="Script" uid="uid://400u8hdtgta8" path="res://Scenes/elevator.gd" id="2_xfk5q"]
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
@@ -116,6 +116,10 @@ script = ExtResource("1_xrdnt")
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_vk57k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33552635, 2.4470885, 2.3097239)
 
+[node name="Camera3D" parent="." unique_id=1595908686 instance=ExtResource("9_wrinw")]
+transform = Transform3D(-0.9812658, 0, 0.19265898, 0.19265895, -0.00054101547, 0.98126566, 0.00010423148, 0.9999999, 0.00053087994, 1.5390744, 7.6234193, -33.154568)
+current = true
+
 [node name="elevator" type="StaticBody3D" parent="." unique_id=1496027745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33042932, 5.988233)
 script = ExtResource("2_xfk5q")
@@ -175,10 +179,6 @@ shape = SubResource("BoxShape3D_af3po")
 [node name="fakeMirror" type="Sprite3D" parent="elevator" unique_id=852214732]
 transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0, 1.7000341, 0.9230559)
 texture = ExtResource("2_8ffim")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2002830930]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.90785336, -4.489986)
-current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=982452447]
 environment = SubResource("Environment_6444e")
@@ -282,7 +282,7 @@ shape = SubResource("BoxShape3D_6ssoq")
 [node name="Sword" parent="." unique_id=1973335216 instance=ExtResource("8_chwpn")]
 transform = Transform3D(1, 0, 0, 0, -0.99998873, -0.00474714, 0, 0.00474714, -0.99998873, 0.019853517, 0.9472842, -1.0772712)
 
-[node name="Camera3D2" parent="." unique_id=1595908686 instance=ExtResource("9_wrinw")]
+[node name="Camera3D2" parent="." unique_id=1624475961 instance=ExtResource("9_wrinw")]
 current = true
 
 [node name="testTarget" type="MeshInstance3D" parent="." unique_id=1611908743 groups=["testTargetGroup"]]

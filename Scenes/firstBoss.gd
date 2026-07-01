@@ -33,11 +33,14 @@ func attack(attackType: int, attackDelay):
 	if (attackType==1):
 		projectile.projectileColor = Color.BLUE
 		projectile.attackType=1
-	if (attackType==2):
+	elif (attackType==2):
 		projectile.projectileColor = Color.RED
 		projectile.attackType=2
-	if (attackType==3):
+	elif (attackType==3):
 		#insert attack shoots bullets all around the boss.
+		projectile.projectileColor = Color.RED
+		projectile.attackType=3
+		projectile.rotation.y = rotation.y
 		pass
 			
 	#projectile.global_transform.basis.z = global_transform.basis.z
@@ -84,9 +87,12 @@ func laserShotStart():
 
 func spinAttack():
 	lookingAtPlayer = false
+	var count=0
 	for i in range(12):
-		attack(2,0.5)
-		rotation.y = i * 30
+		attack(3,0.5*i)
+		rotation.y = count * 30
+		print("count: ", count,". rotation: ",rotation.y)
+		count = count + 1
 	
 	#attack(2,0.6)
 	#attack(1,0.8)

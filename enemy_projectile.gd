@@ -28,8 +28,9 @@ func _ready() -> void:
 		#look_at(target_position, Vector3.UP)
 	if attackType==1:
 		$MeshInstance3D.mesh.material.albedo_color = Color.BLUE
-	elif attackType==2:
+	elif attackType==2 || attackType==3:
 		$MeshInstance3D.mesh.material.albedo_color = Color.RED
+	print(rotation.y)
 		
 
 
@@ -48,6 +49,7 @@ func _process(delta: float) -> void:
 			#targetSet=true
 		global_position -= transform.basis.z# * projectileSpeed * delta
 	if (attackType==3):
+		global_position -= transform.basis.z
 		pass
 		
 	#if(homingBullet): # all the attempts at making the projectiles work
