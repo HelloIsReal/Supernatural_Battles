@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 		global_position -= transform.basis.z# * projectileSpeed * delta
 	if (attackType==3):
 		global_position -= transform.basis.z
-		pass
+
 		
 	#if(homingBullet): # all the attempts at making the projectiles work
 		# all commented code here, to be deleted when finished.
