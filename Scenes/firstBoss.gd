@@ -40,7 +40,7 @@ func attack(attackType: int, attackDelay):
 		#insert attack shoots bullets all around the boss.
 		projectile.projectileColor = Color.RED
 		projectile.attackType=3
-		projectile.rotation.y = rotation.y
+		projectile.global_rotation.y = global_rotation.y
 	get_tree().current_scene.add_child(projectile)
 			
 	#projectile.global_transform.basis.z = global_transform.basis.z
@@ -81,7 +81,7 @@ func laserShotStart():
 	attack(1,2.2)
 	tween = get_tree().create_tween()
 	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
-	lookingAtPlayer = false
+	#lookingAtPlayer = false
 	await get_tree().create_timer(2).timeout
 	spinAttack()
 

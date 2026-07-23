@@ -115,3 +115,4 @@ func _on_area_entered(area: Area3D) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is XRToolsPlayerBody:
 		print("body hit player gonna go!!!!")
+		# I have a feeling I need to use this instead for player collision
