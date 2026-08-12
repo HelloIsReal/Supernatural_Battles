@@ -4,12 +4,12 @@ extends Node3D
 
 
 
-@onready var player = get_tree().get_first_node_in_group("testTargetGroup")
+#@onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
 var projectileSpeed=1
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
-@onready var target_position = player.global_position# + Vector3(1,0,0)
+@onready var target_position = Globals.playerHitbox#player.global_position# + Vector3(1,0,0)
 #var targetSet=false
 var attackType=0
 
@@ -37,7 +37,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (attackType==1): #homing bullet
-		target_position = player.global_position
+		target_position = Globals.playerHitbox#player.global_position
 		look_at(target_position, Vector3.UP)
 		global_position -= transform.basis.z# * projectileSpeed * delta
 	if (attackType==2): #non-homing bullet.

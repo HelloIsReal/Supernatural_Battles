@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cc5hlux5rahti" path="res://Scenes/hand_particles.tscn" id="5_u2me7"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_yyaeh"]
 [ext_resource type="Script" uid="uid://ctkq2bur6p8kw" path="res://Scripts/controllerDefaults.gd" id="7_2texp"]
-[ext_resource type="PackedScene" path="res://Scenes/health_bar.tscn" id="8_ks4sd"]
+[ext_resource type="PackedScene" uid="uid://1i5oerhampqy" path="res://Scenes/health_bar.tscn" id="8_ks4sd"]
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_g3ggb"]
 [ext_resource type="Texture2D" uid="uid://1byadqvd8mju" path="res://cursedEnergyStock.png" id="10_qrigr"]
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_1cx2o"]

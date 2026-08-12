@@ -11,7 +11,7 @@ func _ready():
 	Globals.damagePlayer.connect(takeDamage)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#$playerHitbox.global_position = $PlayerBody.global_position
+	Globals.playerHitbox = $PlayerBody.global_position
 	#print($"..".position)
 	if !Globals.cursedEnergyInUse:
 		$playerMainController/cursedEnergyRefillTick.paused = false

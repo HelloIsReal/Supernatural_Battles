@@ -14,7 +14,7 @@ height = 0.6
 [sub_resource type="SphereShape3D" id="SphereShape3D_qssmw"]
 radius = 0.30694804
 
-[node name="enemyProjectile" type="Area3D" unique_id=2049946196 groups=["enemyAttack"]]
+[node name="enemyProjectile" type="Area3D" unique_id=2049946196 groups=["enemyAttack", "playerAttack"]]
 collision_mask = 524289
 script = ExtResource("1_r6uwg")
 
