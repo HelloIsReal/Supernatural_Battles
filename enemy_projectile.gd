@@ -6,7 +6,7 @@ extends Node3D
 
 #@onready var player = get_tree().get_first_node_in_group("player")
 var homingBullet=true
-var projectileSpeed=1
+var projectileSpeed=20
 var playerPositionCheck=false
 var bodySize = 0.3 # offsets the orbs to hit the player body and not feet.
 var projectileColor: Color = "RED"
@@ -14,7 +14,7 @@ var projectileColor: Color = "RED"
 #var targetSet=false
 var attackType=0
 
-func _ready() -> void:
+#func _ready() -> void:
 	#$MeshInstance3D.mesh.material.albedo_color = projectileColor
 	#if projectileColor == Color.RED:
 		#print("red!")
@@ -27,21 +27,21 @@ func _ready() -> void:
 		##$aimAtPlayer.start()
 		#target_position = player.global_position
 		#look_at(target_position, Vector3.UP)
-	if attackType==1:
-		$MeshInstance3D.mesh.material.albedo_color = Color.BLUE
-	elif attackType==2 || attackType==3:
-		$MeshInstance3D.mesh.material.albedo_color = Color.RED
-	print(rotation.y)
+		
+	#print(rotation.y)
 		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (attackType==1): #homing bullet
+		$MeshInstance3D.mesh.material.albedo_color = Color.BLUE
 		target_position = Globals.playerHitbox#player.global_position
+		target_position += Vector3(0,1,0)
 		look_at(target_position, Vector3.UP)
-		global_position -= transform.basis.z# * projectileSpeed * delta
+		global_position -= transform.basis.z * projectileSpeed * delta## * projectileSpeed * delta
 	if (attackType==2): #non-homing bullet.
+		$MeshInstance3D.mesh.material.albedo_color = Color.RED
 		#target_position = player.global_position
 		#look_at(target_position, Vector3.UP)
 		#if !targetSet:
@@ -50,15 +50,18 @@ func _process(delta: float) -> void:
 			#targetSet=true
 		if(!playerPositionCheck):
 			target_position = Globals.playerHitbox#player.global_position
+			target_position += Vector3(0,1,0)
 			look_at(target_position, Vector3.UP)
-		global_position -= transform.basis.z# * projectileSpeed * delta# * projectileSpeed * delta
+		global_position -= transform.basis.z * projectileSpeed * delta## * projectileSpeed * delta
 	if (attackType==3):
+		$MeshInstance3D.mesh.material.albedo_color = Color.RED
 		#global_position -= transform.basis.z
 		
 		if(!playerPositionCheck):
 			target_position = Globals.playerHitbox#player.global_position
+			target_position += Vector3(0,1,0)
 			look_at(target_position, Vector3.UP)
-		global_position -= transform.basis.z# * projectileSpeed * delta# * projectileSpeed * delta
+		global_position -= transform.basis.z * projectileSpeed * delta## * projectileSpeed * delta
 		
 	#if(homingBullet): # all the attempts at making the projectiles work
 		# all commented code here, to be deleted when finished.

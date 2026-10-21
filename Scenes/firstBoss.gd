@@ -27,7 +27,7 @@ func attack(attackType: int, attackDelay):
 	await get_tree().create_timer(attackDelay).timeout
 	var projectile = bulletProjectile.instantiate()
 	
-	#$model/rightHand.look_at(-player.global_position, Vector3.UP)
+	$model/body.look_at(-player.global_position, Vector3.UP)
 	#player.global_po
 	#projectile.add_collision_exception_with(self)
 	
@@ -74,18 +74,20 @@ func laserShotStart():
 	tween.tween_property($model/rightHand, "position", Vector3(-0.5,0,1), 0.6)
 	await tween.finished
 	lookingAtPlayer=true
-	attack(2,0.2)
-	attack(1,0.4)
-	await get_tree().create_timer(3).timeout
-	attack(1,1)
-	attack(1,1.4)
-	attack(1,1.8)
-	attack(1,2.2)
-	tween = get_tree().create_tween()
-	tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
-	#lookingAtPlayer = false
-	await get_tree().create_timer(2).timeout
-	spinAttack()
+	while(true):
+		attack(2,0.2)
+		attack(1,0.4)
+		await get_tree().create_timer(3).timeout
+		attack(1,1)
+		attack(1,1.4)
+		attack(1,1.8)
+		attack(1,2.2)
+		tween = get_tree().create_tween()
+		tween.tween_property($model/rightHand, "position", Vector3(-0.8,0,0), 0.3)
+		#lookingAtPlayer = false
+		await get_tree().create_timer(2).timeout
+		spinAttack()
+		await get_tree().create_timer(8).timeout
 
 func spinAttack():
 	lookingAtPlayer = false

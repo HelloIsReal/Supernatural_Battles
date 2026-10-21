@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-
+var rng = RandomNumberGenerator.new()
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var enemyHealth = 10
+@export var enemyHealth = 10
 
 func _ready() -> void:
 	# used to check if this enemy has loaded. Mainly for inherited scenes.
@@ -42,7 +42,8 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("playerAttack") and $invincibilityCooldown.is_stopped():
 		$invincibilityCooldown.start()
 		enemyHealth = enemyHealth - Globals.swordDamage
-		print("ouch")
+		print("ouch (enemy.gd script)")
+		global_position = Vector3(randi_range(-25,25),1,randi_range(-45,-15))
 	$Label3D.text = "Health: %.1f" % enemyHealth
 	if enemyHealth <= 0:
 		queue_free()

@@ -215,6 +215,6 @@ max_db = 5.0
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]
 [connection signal="released" from="." to="." method="_on_released"]
-[connection signal="timeout" from="tickTime" to="." method="_on_tick_time_timeout"]
 [connection signal="timeout" from="tickTime" to="." method="_on_trail_lifetime_timeout"]
+[connection signal="timeout" from="tickTime" to="." method="_on_tick_time_timeout"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

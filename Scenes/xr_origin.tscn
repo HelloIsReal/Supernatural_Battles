@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_g3ggb"]
 [ext_resource type="Texture2D" uid="uid://1byadqvd8mju" path="res://cursedEnergyStock.png" id="10_qrigr"]
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_1cx2o"]
-[ext_resource type="PackedScene" uid="uid://gy4et5smlkd0" path="res://grassMover.tscn" id="19_kch45"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ouv"]
 render_priority = 1
@@ -156,6 +155,7 @@ axis = 0
 texture = SubResource("ViewportTexture_ks4sd")
 
 [node name="MovementDirect" parent="LeftHand" unique_id=732449142 instance=ExtResource("2_v0u4l")]
+max_speed = 5.0
 strafe = true
 
 [node name="FunctionPickup" parent="LeftHand" unique_id=1353136287 instance=ExtResource("3_3hom5")]
@@ -232,13 +232,11 @@ collision_layer = 524289
 shape = SubResource("CapsuleShape3D_u2me7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody/playerHitbox" unique_id=1621856233]
+visible = false
 mesh = SubResource("CapsuleMesh_kch45")
 
 [node name="MovementFlight" parent="." unique_id=72380258 instance=ExtResource("12_1cx2o")]
 enabled = false
-
-[node name="grassMover" parent="." unique_id=2112642318 instance=ExtResource("19_kch45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14855486, 0)
 
 [connection signal="timeout" from="playerMainController/cursedEnergyRefillTick" to="." method="_on_cursed_energy_refill_tick_timeout"]
 [connection signal="timeout" from="playerMainController/dashCooldown" to="RightHand" method="_on_dash_cooldown_timeout"]

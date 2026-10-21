@@ -118,3 +118,6 @@ material_override = SubResource("StandardMaterial3D_j0xkv")
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_kovvu")
 draw_pass_1 = SubResource("QuadMesh_dgsyw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=908116586]
+light_color = Color(0, 1, 1, 1)

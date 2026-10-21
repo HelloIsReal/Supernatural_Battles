@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cjh84apl2eey6" path="res://Scenes/level_1.gd" id="1_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://cvusfg5qbu2hh" path="res://mirrorPlaceholder.png" id="2_8ffim"]
 [ext_resource type="Script" uid="uid://400u8hdtgta8" path="res://Scenes/elevator.gd" id="2_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://gy4et5smlkd0" path="res://grassMover.tscn" id="3_6ioyp"]
 [ext_resource type="Shader" uid="uid://85yr38gpphkt" path="res://grassSway.tres" id="4_6444e"]
 [ext_resource type="ArrayMesh" uid="uid://bboe8duk7ptrb" path="res://straw.obj" id="5_evi0p"]
 [ext_resource type="Texture2D" uid="uid://dv4fi4gvshhem" path="res://kloofendal_43d_clear_puresky_4k.exr" id="5_wrinw"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cf3k15qt563so" path="res://Scenes/firstBoss.tscn" id="11_uy8f0"]
 [ext_resource type="PackedScene" uid="uid://byjfsxh7m60a3" path="res://free_pack_-_rocks_stylized.glb" id="12_uy8f0"]
 [ext_resource type="PackedScene" uid="uid://uejbqgsbuhk2" path="res://Scenes/speakersPickable.tscn" id="13_6r07y"]
+[ext_resource type="PackedScene" uid="uid://dcnba8u2qp7h1" path="res://Scenes/rock_climb_object.tscn" id="15_oovug"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xfk5q"]
 size = Vector3(2, 0.1, 2)
@@ -82,7 +84,7 @@ size = Vector2(30, 30)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lsmp6"]
 render_priority = 0
 shader = ExtResource("4_6444e")
-shader_parameter/player_pos = Vector3(6.95948, 1.6242299, 2.3097239)
+shader_parameter/player_pos = Vector3(0, 1.0613261, 2.8127487)
 shader_parameter/radius = 1.5
 shader_parameter/power = 1.0
 shader_parameter/albedo = Color(0, 1, 0, 1)
@@ -109,13 +111,13 @@ size = Vector3(0.17984009, 1, 0.41033554)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
 size = Vector3(0.17984009, 1, 0.41033554)
 
-[sub_resource type="BoxMesh" id="BoxMesh_uy8f0"]
-
 [node name="level1" type="Node3D" unique_id=1784115397]
 script = ExtResource("1_xrdnt")
 
 [node name="XROrigin3D" parent="." unique_id=503226863 instance=ExtResource("1_vk57k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95948, 1.7727847, 2.3097239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0613261, 2.8127487)
+
+[node name="grassMover2" parent="XROrigin3D" unique_id=2112642318 instance=ExtResource("3_6ioyp")]
 
 [node name="Camera3D" parent="." unique_id=1595908686 instance=ExtResource("9_wrinw")]
 transform = Transform3D(-0.9812658, 0, 0.19265898, 0.19265895, -0.00054101547, 0.98126566, 0.00010423148, 0.9999999, 0.00053087994, 1.5390744, 7.6234193, -33.154568)
@@ -185,7 +187,7 @@ texture = ExtResource("2_8ffim")
 environment = SubResource("Environment_6444e")
 
 [node name="firstBoss" parent="." unique_id=593049408 instance=ExtResource("11_uy8f0")]
-transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 1.1623526, -32.959827)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -25.073315, 1.1623526, -16.362438)
 
 [node name="grassTemplate" type="Node3D" parent="." unique_id=1082902149]
 
@@ -286,9 +288,26 @@ transform = Transform3D(1, 0, 0, 0, -0.99998873, -0.00474714, 0, 0.00474714, -0.
 [node name="Camera3D2" parent="." unique_id=1624475961 instance=ExtResource("9_wrinw")]
 current = true
 
-[node name="testTarget" type="MeshInstance3D" parent="." unique_id=1611908743 groups=["testTargetGroup"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.395813, 2.1943188, -11.625611)
-mesh = SubResource("BoxMesh_uy8f0")
-
 [node name="PickableObject" parent="." unique_id=1316423025 instance=ExtResource("13_6r07y")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.7189794, 0.51017094, 1.6559162)
+
+[node name="rockClimbObject2" parent="PickableObject" unique_id=1341489793 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 2.0430822, 3.0365229)
+
+[node name="rockClimbObject3" parent="PickableObject" unique_id=366753257 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 1.4095352, 3.7161446)
+
+[node name="rockClimbObject4" parent="PickableObject" unique_id=211965678 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 2.249072, 4.215679)
+
+[node name="rockClimbObject5" parent="PickableObject" unique_id=1521265003 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 0.7170192, 3.2681704)
+
+[node name="rockClimbObject6" parent="PickableObject" unique_id=1013289545 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 2.3317723, 3.566506)
+
+[node name="rockClimbObject7" parent="PickableObject" unique_id=559194091 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.462123, 0.18280554, 3.7707987)
+
+[node name="rockClimbObject" parent="PickableObject" unique_id=1352674616 instance=ExtResource("15_oovug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.490451, 1.0215411, 4.2841644)

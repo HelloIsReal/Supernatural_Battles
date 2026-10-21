@@ -162,6 +162,7 @@ height = 0.2
 
 [node name="firstBoss" type="CharacterBody3D" unique_id=593049408]
 script = ExtResource("1_fmmnk")
+enemyHealth = 40
 
 [node name="invincibilityCooldown" type="Timer" parent="." unique_id=397189476]
 wait_time = 0.3
@@ -187,6 +188,11 @@ shape = SubResource("BoxShape3D_vqdfm")
 material_override = ExtResource("2_s7hp4")
 mesh = SubResource("CapsuleMesh_fmmnk")
 
+[node name="Label3D2" type="Label3D" parent="model/body" unique_id=710939821]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.531, -0.54315066)
+text = ">:("
+font_size = 64
+
 [node name="rightHand" type="MeshInstance3D" parent="model" unique_id=73649130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 material_override = ExtResource("2_s7hp4")
@@ -196,11 +202,6 @@ mesh = SubResource("SphereMesh_gyv2n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
 material_override = ExtResource("2_s7hp4")
 mesh = SubResource("SphereMesh_ckjwh")
-
-[node name="Label3D2" type="Label3D" parent="." unique_id=710939821]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.531, -0.54315066)
-text = ">:("
-font_size = 64
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="." unique_id=1609056547]
 reset_on_save = false
