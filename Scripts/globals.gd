@@ -10,4 +10,4 @@ var cursedEnergyInUse=false
 var playerHealth=20
 var playerDash=true
 var playerHitbox = Vector3(0,0,0)
-var testVar = "test test test test test test test test test test test test test test test test test test test test test test "
+#var testVar = "test test test test test test test test test test test test test test test test test test test test test test "
