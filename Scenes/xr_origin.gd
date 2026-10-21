@@ -12,6 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	Globals.playerHitbox = $PlayerBody.global_position
+	#print($PlayerBody.global_position)
 	#print($"..".position)
 	if !Globals.cursedEnergyInUse:
 		$playerMainController/cursedEnergyRefillTick.paused = false

@@ -8,7 +8,9 @@ var lookingAtPlayer = true
 
 
 func _ready() -> void:
+	
 	super() # allows the extended script to finish initializing first
+	#print(Globals.testVar)
 	await get_tree().create_timer(3).timeout
 	energySpinShow()
 	await get_tree().create_timer(2).timeout
@@ -40,7 +42,7 @@ func attack(attackType: int, attackDelay):
 		#insert attack shoots bullets all around the boss.
 		projectile.projectileColor = Color.RED
 		projectile.attackType=3
-		projectile.global_rotation.y = global_rotation.y
+		#projectile.global_rotation.y = global_rotation.y
 	get_tree().current_scene.add_child(projectile)
 			
 	#projectile.global_transform.basis.z = global_transform.basis.z
