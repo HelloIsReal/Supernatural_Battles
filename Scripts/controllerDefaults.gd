@@ -53,7 +53,11 @@ func _physics_process(_delta):
 		if(is_button_pressed("by_button") and handCanDash and Globals.playerDash): # If button pressed, and this controller hand is allowed to dash, and player can dash.
 			Globals.playerDash=false
 			$"../playerMainController/dashCooldown".start()
+			
+			#await get_tree().create_timer(0.02).timeout
 			$"../PlayerBody".velocity = -$"..".transform.basis.z * dashSpeed
+			$"../PlayerBody".velocity.y += 4
+			
 			print("dash!")
 	
 
