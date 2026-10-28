@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://i26p7pvcf322" path="res://Scenes/firstBoss.gd" id="1_fmmnk"]
 [ext_resource type="AudioStream" uid="uid://ubwwujb60mly" path="res://voices/watashi first attack desu.wav" id="2_l2ouv"]
 [ext_resource type="Material" uid="uid://dp6glv31muedr" path="res://Toon Material.tres" id="2_s7hp4"]
+[ext_resource type="AudioStream" uid="uid://b04gjyb43c8u7" path="res://voices/enemyHurt.mp3" id="4_5ab6w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_etiev"]
 size = Vector3(1.0167599, 1.9441986, 0.84690857)
@@ -160,9 +161,10 @@ material = SubResource("StandardMaterial3D_veu6x")
 radius = 0.1
 height = 0.2
 
-[node name="firstBoss" type="CharacterBody3D" unique_id=593049408]
+[node name="firstBoss" type="CharacterBody3D" unique_id=593049408 node_paths=PackedStringArray("hurtSound")]
 script = ExtResource("1_fmmnk")
 enemyHealth = 40
+hurtSound = NodePath("hurtSound")
 
 [node name="invincibilityCooldown" type="Timer" parent="." unique_id=397189476]
 wait_time = 0.3
@@ -244,6 +246,11 @@ stream = ExtResource("2_l2ouv")
 attenuation_model = 3
 volume_db = 10.0
 pitch_scale = 1.3
+
+[node name="hurtSound" type="AudioStreamPlayer3D" parent="." unique_id=479164404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44007504, 0)
+stream = ExtResource("4_5ab6w")
+volume_db = 15.0
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_area_3d_body_entered"]
