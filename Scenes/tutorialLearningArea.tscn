@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://uejbqgsbuhk2" path="res://Scenes/speakersPickable.tscn" id="8_6eadw"]
 [ext_resource type="PackedScene" uid="uid://bxooylom0hsdb" path="res://Scenes/cube.tscn" id="9_c35cr"]
 [ext_resource type="PackedScene" uid="uid://bo2dpae16s0f2" path="res://Scenes/freeFlyCamera.tscn" id="9_vhp3c"]
+[ext_resource type="PackedScene" uid="uid://gvfvw1e8bi8y" path="res://htcEliteController.glb" id="11_t0sxt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0sxt"]
 panorama = ExtResource("2_dwmg1")
@@ -314,3 +315,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.164703, 1.1335979, 54.32285
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.8465176, 2.494874)
 text = "Welcome to Supernatural Battles!
 "
+
+[node name="htcEliteController" parent="." unique_id=45331907 instance=ExtResource("11_t0sxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6199383, 1.917791, -0.09353876)
